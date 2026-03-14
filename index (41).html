@@ -1,0 +1,3063 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta name="google-site-verification" content="mNfTObm6ey_6rxwRRbWYbMB11cB9Mn0rIQpXTkgxsTc" />
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6708116399283518"
+     crossorigin="anonymous"></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Twinzie | Find People Who Share Your Birth Date</title>
+  <meta name="description" content="Twinzie helps you discover people who share your birth date, view public messages for that day, and enjoy a smooth multilingual experience." />
+  <meta name="keywords" content="Twinzie, birthday twin, same birth date, public messages, birth date finder, multilingual website" />
+  <meta name="author" content="Twinzie" />
+  <meta name="robots" content="index, follow" />
+  <meta name="theme-color" content="#0d1329" />
+  <link rel="canonical" href="https://twinzie.com/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Twinzie | Find Your Birthday Twin" />
+  <meta property="og:description" content="Discover people with the same birth date, view public messages, and enjoy a beautiful multilingual experience." />
+  <meta property="og:url" content="https://twinzie.com/" />
+  <meta property="og:site_name" content="Twinzie" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Twinzie" />
+  <meta name="twitter:description" content="Find your birthday twin and explore public messages for your special date." />
+
+  <!-- ═══════════════════════════════════════════════════════════
+       STYLES
+  ═══════════════════════════════════════════════════════════ -->
+  <style>
+    /* ── CSS Variables ─────────────────────────────────────── */
+    :root {
+      --bg:#070b18; --bg2:#0d1530; --bg3:#111c3f;
+      --card:rgba(255,255,255,.10); --card2:rgba(255,255,255,.16);
+      --line:rgba(255,255,255,.14); --line-strong:rgba(255,255,255,.22);
+      --text:#f8fbff; --muted:rgba(248,251,255,.82); --dim:rgba(248,251,255,.60);
+      --gold:#ffd76a; --gold2:#ffb347; --blue:#7dc7ff;
+      --violet:#9d8bff; --pink:#ff9fd2; --green:#93f0c4; --danger:#ff9d9d;
+      --shadow:0 30px 80px rgba(0,0,0,.38);
+      --shadow-soft:0 18px 45px rgba(0,0,0,.22);
+      --glow-gold:0 0 30px rgba(255,215,106,.18);
+      --glow-blue:0 0 40px rgba(125,199,255,.14);
+      --radius-xl:30px; --radius-lg:24px; --radius-md:18px; --radius-sm:14px;
+      --maxw:1220px; --focus:0 0 0 3px rgba(255,215,106,.32);
+    }
+    body.high-contrast {
+      --bg:#000; --bg2:#080808; --bg3:#101010;
+      --line:rgba(255,255,255,.22); --line-strong:rgba(255,255,255,.34);
+      --text:#fff; --muted:rgba(255,255,255,.94); --dim:rgba(255,255,255,.78);
+      --gold:#ffe97d;
+    }
+
+    /* ── Reset & Base ──────────────────────────────────────── */
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:'DM Sans', system-ui, -apple-system, "Segoe UI", sans-serif;
+      color:var(--text);
+      background:
+        radial-gradient(circle at 10% 10%, rgba(125,199,255,.22), transparent 24%),
+        radial-gradient(circle at 85% 18%, rgba(157,139,255,.20), transparent 26%),
+        radial-gradient(circle at 80% 82%, rgba(255,159,210,.18), transparent 24%),
+        radial-gradient(circle at 18% 78%, rgba(255,215,106,.10), transparent 22%),
+        linear-gradient(135deg,var(--bg) 0%,var(--bg2) 45%,var(--bg3) 100%);
+      min-height:100vh; overflow-x:hidden; letter-spacing:.01em;
+    }
+    a{color:inherit;text-decoration:none}
+    button,input,textarea,select{font:inherit}
+    button{cursor:pointer}
+    img{max-width:100%}
+
+    /* ── Canvas/Orbs ────────────────────────────────────────── */
+    #stars{position:fixed;inset:0;width:100%;height:100%;z-index:-3;display:block}
+    .orb{
+      position:fixed;border-radius:50%;filter:blur(90px);opacity:.34;
+      z-index:-2;pointer-events:none;mix-blend-mode:screen;
+    }
+    .orb.a{width:520px;height:520px;top:-140px;right:-120px;
+      background:radial-gradient(circle,rgba(125,199,255,.95),transparent 62%)}
+    .orb.b{width:440px;height:440px;bottom:-120px;left:-100px;
+      background:radial-gradient(circle,rgba(255,159,210,.88),transparent 62%)}
+
+    /* ── Layout ─────────────────────────────────────────────── */
+    .container{width:min(calc(100% - 24px),var(--maxw));margin-inline:auto}
+
+    /* ── Glass Effect ───────────────────────────────────────── */
+    .glass{
+      background:linear-gradient(180deg,rgba(255,255,255,.14),rgba(255,255,255,.06));
+      border:1px solid var(--line);
+      backdrop-filter:blur(18px) saturate(160%);
+      -webkit-backdrop-filter:blur(18px) saturate(160%);
+      box-shadow:var(--shadow);position:relative;overflow:hidden;
+    }
+    .glass::before{
+      content:"";position:absolute;inset:0;pointer-events:none;
+      background:linear-gradient(135deg,rgba(255,255,255,.12),transparent 32%,transparent 70%,rgba(255,255,255,.06));
+      opacity:.8;
+    }
+
+    /* ── Header ─────────────────────────────────────────────── */
+    .header{
+      position:sticky;top:12px;z-index:50;margin-top:12px;
+      border-radius:var(--radius-xl);padding:14px 18px;
+      display:flex;align-items:center;justify-content:space-between;
+      gap:14px;flex-wrap:wrap;
+      background:linear-gradient(180deg,rgba(255,255,255,.14),rgba(255,255,255,.06));
+      border:1px solid rgba(255,255,255,.16);
+      box-shadow:0 16px 40px rgba(0,0,0,.26),inset 0 1px 0 rgba(255,255,255,.08);
+    }
+    .brand{display:flex;align-items:center;gap:14px}
+    .brand-logo{
+      width:52px;height:52px;border-radius:16px;position:relative;flex:0 0 auto;
+      background:
+        radial-gradient(circle at 30% 30%,rgba(255,215,106,.95),rgba(255,215,106,.25) 35%,transparent 60%),
+        radial-gradient(circle at 72% 70%,rgba(125,199,255,.95),rgba(125,199,255,.22) 35%,transparent 60%),
+        linear-gradient(135deg,rgba(255,255,255,.18),rgba(255,255,255,.05));
+      border:1px solid rgba(255,255,255,.18);
+      box-shadow:0 0 28px rgba(255,215,106,.18),0 0 34px rgba(125,199,255,.12),inset 0 1px 0 rgba(255,255,255,.18);
+      overflow:hidden;
+    }
+    .brand-logo::before,.brand-logo::after{
+      content:"";position:absolute;border-radius:999px;
+      background:rgba(255,255,255,.86);opacity:.9;
+    }
+    .brand-logo::before{width:18px;height:18px;left:11px;top:10px;box-shadow:0 0 20px rgba(255,255,255,.18)}
+    .brand-logo::after{width:12px;height:12px;right:12px;bottom:11px;box-shadow:0 0 20px rgba(255,255,255,.18)}
+    .brand-text h1{margin:0;font-size:1.28rem;font-weight:950;letter-spacing:.01em}
+    .brand-text p{margin:0;color:var(--gold);font-size:.78rem;letter-spacing:.18em;text-transform:uppercase;font-weight:900;opacity:.95}
+    .header-actions{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+
+    /* ── Buttons ─────────────────────────────────────────────── */
+    .ghost-btn,.cta-btn,.mini-btn,.tab-btn,.share-btn{
+      border:none;border-radius:999px;
+      transition:transform .22s ease,box-shadow .22s ease,background .22s ease,border-color .22s ease,opacity .22s ease;
+    }
+    .ghost-btn:hover,.cta-btn:hover,.mini-btn:hover,.tab-btn:hover,.share-btn:hover{transform:translateY(-2px)}
+    .ghost-btn{
+      background:rgba(255,255,255,.08);color:var(--text);
+      border:1px solid var(--line);padding:10px 15px;
+      box-shadow:inset 0 1px 0 rgba(255,255,255,.05);
+    }
+    .ghost-btn:hover{background:rgba(255,255,255,.12);border-color:var(--line-strong);box-shadow:var(--shadow-soft)}
+    .mini-btn{
+      background:linear-gradient(135deg,rgba(125,199,255,.18),rgba(157,139,255,.18));
+      color:var(--text);border:1px solid rgba(255,255,255,.16);
+      padding:11px 13px;white-space:nowrap;box-shadow:var(--shadow-soft);
+    }
+    .cta-btn{
+      background:linear-gradient(135deg,var(--gold),var(--gold2));
+      color:#1c1c1c;font-weight:950;padding:14px 22px;
+      box-shadow:0 16px 34px rgba(255,179,71,.22),inset 0 1px 0 rgba(255,255,255,.45);
+      letter-spacing:.02em;
+    }
+    .tab-btn{
+      background:rgba(255,255,255,.05);color:var(--muted);
+      border:1px solid var(--line);padding:10px 16px;font-weight:800;
+    }
+    .tab-btn.active{
+      background:linear-gradient(135deg,rgba(255,215,106,.16),rgba(255,159,210,.10));
+      color:var(--gold);border-color:rgba(255,215,106,.24);box-shadow:var(--glow-gold);
+    }
+    .share-btn{
+      background:linear-gradient(135deg,rgba(147,240,196,.18),rgba(125,199,255,.18));
+      color:var(--text);border:1px solid rgba(147,240,196,.22);
+      padding:11px 16px;font-weight:700;display:inline-flex;align-items:center;gap:8px;
+      box-shadow:var(--shadow-soft);font-size:.93rem;
+    }
+    .share-btn:hover{background:linear-gradient(135deg,rgba(147,240,196,.26),rgba(125,199,255,.26))}
+
+    /* ── Lang Select ─────────────────────────────────────────── */
+    .lang-select{
+      appearance:none;-webkit-appearance:none;
+      background:linear-gradient(135deg,rgba(125,199,255,.18),rgba(157,139,255,.18));
+      color:var(--text);border:1px solid rgba(255,255,255,.16);
+      padding:10px 38px 10px 16px;border-radius:999px;font-weight:600;font-size:.95rem;
+      cursor:pointer;transition:all .22s ease;
+      box-shadow:var(--shadow-soft),inset 0 1px 0 rgba(255,255,255,.05);
+      outline:none;color-scheme:dark;
+      background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23ffd76a' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+      background-repeat:no-repeat;background-position:right 12px center;background-size:16px;
+      min-width:140px;
+    }
+    body[dir="rtl"] .lang-select{
+      background-position:left 12px center;padding:10px 16px 10px 38px;
+    }
+    .lang-select:hover{border-color:rgba(255,215,106,.5);box-shadow:var(--glow-gold),0 6px 18px rgba(0,0,0,.3)}
+    .lang-select:focus{box-shadow:var(--focus);border-color:var(--gold)}
+    .lang-select option{background:#0d1530;color:#f8fbff;padding:10px}
+
+    /* ── Hero ────────────────────────────────────────────────── */
+    .hero{
+      display:grid;grid-template-columns:1.15fr .85fr;
+      gap:26px;padding:50px 0 26px;align-items:start;
+    }
+    .eyebrow{
+      color:var(--gold);text-transform:uppercase;letter-spacing:.20em;
+      font-size:.8rem;font-weight:950;margin:0 0 12px;
+      text-shadow:0 0 18px rgba(255,215,106,.12);
+    }
+    .display{
+      margin:0;font-size:clamp(2.4rem,5vw,5rem);line-height:.98;
+      letter-spacing:-.045em;font-weight:1000;max-width:11ch;
+      text-wrap:balance;text-shadow:0 8px 30px rgba(0,0,0,.24);
+    }
+    .lead{margin:18px 0 20px;color:var(--muted);line-height:1.95;font-size:1.06rem;max-width:60ch}
+    .card{border-radius:var(--radius-xl);padding:20px}
+    .clock-box{margin-bottom:18px}
+    .clock-wrap{
+      border-radius:24px;padding:22px 16px;display:grid;place-items:center;
+      background:
+        radial-gradient(circle,rgba(255,215,106,.14),transparent 44%),
+        radial-gradient(circle,rgba(125,199,255,.11),transparent 62%),
+        linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,.02));
+      border:1px solid rgba(255,255,255,.10);box-shadow:inset 0 1px 0 rgba(255,255,255,.06);
+    }
+    .clock-time{
+      color:var(--gold);font-weight:1000;font-size:clamp(2rem,3vw,3.2rem);
+      letter-spacing:.09em;text-shadow:0 0 24px rgba(255,215,106,.22);
+    }
+    .clock-zone{margin-top:7px;color:var(--muted);font-size:.83rem;letter-spacing:.20em;text-transform:uppercase}
+    .side-col{display:grid;gap:16px}
+    .quote{
+      font-size:1.12rem;line-height:1.95;color:var(--muted);font-style:italic;position:relative;
+    }
+    .quote::after{
+      content:"";position:absolute;inset:auto 20px 16px auto;width:58px;height:58px;
+      border-radius:50%;background:radial-gradient(circle,rgba(255,215,106,.16),transparent 70%);
+      filter:blur(6px);pointer-events:none;
+    }
+    .stats{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+    .stat strong{
+      display:block;color:var(--gold);font-size:1.82rem;font-weight:1000;
+      margin-bottom:8px;text-shadow:0 0 18px rgba(255,215,106,.12);
+    }
+    .stat span{color:var(--dim);font-size:.92rem;line-height:1.7}
+
+    /* ── Form ────────────────────────────────────────────────── */
+    .form-card{
+      border-radius:var(--radius-xl);padding:20px;
+      box-shadow:0 24px 60px rgba(0,0,0,.30),0 0 0 1px rgba(255,255,255,.03) inset,0 0 40px rgba(125,199,255,.05);
+    }
+    .grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:15px}
+    .field{display:grid;gap:8px}
+    .field.wide{grid-column:1/-1}
+    .field span{font-size:.95rem;font-weight:850}
+    input,textarea,select{
+      width:100%;border-radius:var(--radius-md);border:1px solid rgba(255,255,255,.13);
+      background:linear-gradient(180deg,rgba(10,16,34,.86),rgba(8,13,28,.72));
+      color:var(--text);padding:14px 15px;outline:none;
+      box-shadow:inset 0 1px 0 rgba(255,255,255,.03),0 6px 18px rgba(0,0,0,.14);
+      transition:border-color .2s ease,box-shadow .2s ease,transform .2s ease;
+    }
+    input::placeholder,textarea::placeholder{color:rgba(255,255,255,.42)}
+    input:focus,textarea:focus,button:focus,select:focus{
+      outline:none;box-shadow:var(--focus);border-color:rgba(255,215,106,.28);
+    }
+    textarea{resize:vertical;min-height:120px}
+    .row{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+    .grow{flex:1}
+    .helper,.small{color:var(--dim);line-height:1.75}
+    .small{font-size:.92rem}
+    .form-footer{
+      margin-top:16px;display:flex;gap:14px;
+      justify-content:space-between;align-items:center;flex-wrap:wrap;
+    }
+
+    /* ── Cooldown Bar ───────────────────────────────────────── */
+    .cooldown-bar-wrap{width:100%;height:4px;background:rgba(255,255,255,.08);border-radius:4px;margin-top:8px;overflow:hidden;display:none}
+    .cooldown-bar{height:100%;background:linear-gradient(90deg,var(--gold),var(--gold2));border-radius:4px;transition:width .5s linear}
+    .cooldown-label{font-size:.82rem;color:var(--dim);margin-top:4px;display:none}
+
+    /* ── Section ─────────────────────────────────────────────── */
+    .section{padding:34px 0 0; margin-top:34px; scroll-margin-top:130px}
+    .section-title{
+      margin:0 0 18px;font-size:clamp(1.6rem,2vw,2.35rem);
+      font-weight:1000;letter-spacing:-.02em;text-shadow:0 8px 30px rgba(0,0,0,.24);
+    }
+    .hidden{display:none !important}
+
+    /* ── Results ─────────────────────────────────────────────── */
+    .search-result-layout{
+      display:grid;grid-template-columns:1.1fr .9fr;gap:22px;align-items:start;
+    }
+    .globe-card{
+      padding:14px;position:relative;border-radius:var(--radius-xl);
+      box-shadow:0 24px 60px rgba(0,0,0,.30),0 0 0 1px rgba(255,255,255,.03) inset,0 0 40px rgba(125,199,255,.05);
+    }
+    #globe{
+      width:100%;height:auto;display:block;border-radius:22px;
+      background:
+        radial-gradient(circle at 50% 45%,rgba(255,255,255,.04),rgba(255,255,255,.01)),
+        linear-gradient(180deg,rgba(255,255,255,.03),rgba(255,255,255,.01));
+      border:1px solid rgba(255,255,255,.08);box-shadow:inset 0 1px 0 rgba(255,255,255,.04);
+    }
+    .result-panel{
+      padding:20px;border-radius:var(--radius-xl);
+      box-shadow:0 24px 60px rgba(0,0,0,.30),0 0 0 1px rgba(255,255,255,.03) inset,0 0 40px rgba(125,199,255,.05);
+    }
+    .meta-list{display:grid;gap:12px;margin-bottom:18px}
+    .meta-row{
+      display:flex;justify-content:space-between;gap:10px;
+      border-bottom:1px solid rgba(255,255,255,.08);padding-bottom:11px;
+    }
+    .meta-label{color:var(--dim);font-size:.92rem}
+    .meta-value{font-weight:850;color:var(--muted);text-align:end}
+    body[dir="ltr"] .meta-value{text-align:start}
+    .candidates{display:grid;gap:14px;margin-top:18px}
+    .person-card{
+      border:1px solid rgba(255,255,255,.10);
+      background:linear-gradient(180deg,rgba(255,255,255,.08),rgba(255,255,255,.04));
+      border-radius:22px;padding:16px;display:grid;gap:10px;
+      transition:transform .22s ease,background .22s ease,border-color .22s ease,box-shadow .22s ease;
+      box-shadow:0 10px 28px rgba(0,0,0,.16);
+    }
+    .person-card:hover{
+      transform:translateY(-3px);
+      background:linear-gradient(180deg,rgba(255,255,255,.11),rgba(255,255,255,.05));
+      border-color:rgba(255,255,255,.18);box-shadow:0 18px 38px rgba(0,0,0,.22);
+    }
+    .person-top{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;align-items:start}
+    .person-name{font-size:1.08rem;font-weight:950;margin:0}
+    .person-location,.person-distance,.person-message-count{color:var(--dim);font-size:.92rem;line-height:1.7}
+    .pill{
+      display:inline-flex;align-items:center;gap:8px;padding:8px 12px;
+      border-radius:999px;border:1px solid rgba(255,255,255,.12);
+      background:linear-gradient(135deg,rgba(125,199,255,.10),rgba(255,159,210,.08));
+      font-size:.85rem;color:var(--muted);font-weight:850;box-shadow:var(--shadow-soft);
+    }
+
+    /* ── Birthday Fun Stats ─────────────────────────────────── */
+    .fun-stats-grid{
+      display:grid;grid-template-columns:repeat(3,minmax(0,1fr));
+      gap:14px;margin-top:20px;
+    }
+    .fun-stat-card{
+      padding:18px;border-radius:22px;
+      background:linear-gradient(180deg,rgba(255,255,255,.10),rgba(255,255,255,.05));
+      border:1px solid rgba(255,255,255,.11);box-shadow:0 14px 34px rgba(0,0,0,.16);
+      text-align:center;
+    }
+    .fun-stat-icon{font-size:1.8rem;margin-bottom:8px;display:block}
+    .fun-stat-value{
+      color:var(--gold);font-size:1.4rem;font-weight:1000;display:block;margin-bottom:4px;
+    }
+    .fun-stat-label{color:var(--dim);font-size:.88rem;line-height:1.6}
+
+    /* ── Famous People ───────────────────────────────────────── */
+    .famous-grid{display:grid;gap:10px;margin-top:14px}
+    .famous-card{
+      display:flex;align-items:center;gap:12px;
+      background:linear-gradient(180deg,rgba(255,255,255,.07),rgba(255,255,255,.04));
+      border:1px solid rgba(255,255,255,.09);border-radius:16px;padding:12px;
+      font-size:.93rem;
+    }
+    .famous-emoji{font-size:1.4rem;flex:0 0 auto}
+    .famous-name{font-weight:850;color:var(--muted)}
+    .famous-detail{color:var(--dim);font-size:.85rem}
+
+    /* ── Share Card ──────────────────────────────────────────── */
+    .share-section{
+      margin-top:20px;padding:18px;border-radius:22px;
+      background:linear-gradient(135deg,rgba(255,215,106,.08),rgba(255,159,210,.06));
+      border:1px solid rgba(255,215,106,.16);
+    }
+    .share-section h4{margin:0 0 12px;font-weight:950;color:var(--gold)}
+    .share-buttons{display:flex;gap:10px;flex-wrap:wrap}
+
+    /* ── Message Board ───────────────────────────────────────── */
+    .message-board{display:grid;gap:16px}
+    .message-composer,.message-list-card{
+      padding:20px;border-radius:var(--radius-xl);
+      box-shadow:0 24px 60px rgba(0,0,0,.30),0 0 0 1px rgba(255,255,255,.03) inset,0 0 40px rgba(125,199,255,.05);
+    }
+    .message-item{
+      border:1px solid rgba(255,255,255,.10);
+      background:linear-gradient(180deg,rgba(255,255,255,.07),rgba(255,255,255,.04));
+      border-radius:20px;padding:15px;margin-bottom:12px;box-shadow:0 10px 24px rgba(0,0,0,.14);
+    }
+    .message-head{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;margin-bottom:8px}
+    .message-author{font-weight:950;color:var(--gold)}
+    .message-meta{color:var(--dim);font-size:.88rem}
+    .message-body{color:var(--muted);line-height:1.95;white-space:pre-wrap;word-wrap:break-word}
+    .message-actions{display:flex;justify-content:flex-end;margin-top:12px}
+    .report-btn{appearance:none;border:1px solid rgba(255,255,255,.12);background:linear-gradient(180deg,rgba(255,255,255,.08),rgba(255,255,255,.04));color:var(--muted);padding:9px 13px;border-radius:999px;font:inherit;font-size:.88rem;font-weight:800;cursor:pointer;transition:.18s transform,.18s border-color,.18s opacity}
+    .report-btn:hover{transform:translateY(-1px);border-color:rgba(255,215,106,.30)}
+    .report-btn[disabled]{opacity:.5;cursor:not-allowed;transform:none}
+    .report-modal-backdrop{position:fixed;inset:0;background:rgba(4,8,20,.62);backdrop-filter:blur(10px);display:flex;align-items:center;justify-content:center;padding:16px;z-index:120}
+    .report-modal{width:min(520px,100%);padding:22px;border-radius:24px;background:linear-gradient(180deg,rgba(28,44,88,.96),rgba(20,30,63,.96));border:1px solid rgba(255,255,255,.10);box-shadow:0 24px 80px rgba(0,0,0,.42)}
+    .report-modal h4{margin:0 0 8px;font-size:1.2rem}
+    .report-modal p{margin:0 0 14px;color:var(--muted);line-height:1.8}
+    .report-preview{padding:12px 14px;border-radius:16px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);margin-bottom:14px;color:var(--muted)}
+    .report-modal textarea,.report-modal select{width:100%}
+    .report-actions{display:flex;justify-content:flex-end;gap:10px;margin-top:16px;flex-wrap:wrap}
+    .ghost-btn{appearance:none;border:1px solid rgba(255,255,255,.14);background:rgba(255,255,255,.04);color:var(--muted);padding:11px 16px;border-radius:999px;font:inherit;font-weight:800;cursor:pointer}
+    .char-count{color:var(--dim);font-size:.9rem}
+    .empty{color:var(--dim);line-height:1.85;padding:8px 0}
+    .loading-msgs{
+      display:flex;align-items:center;gap:10px;color:var(--dim);padding:20px 0;font-size:.95rem;
+    }
+    .spinner{
+      width:20px;height:20px;border:2px solid rgba(255,255,255,.14);
+      border-top-color:var(--gold);border-radius:50%;animation:spin .8s linear infinite;flex:0 0 auto;
+    }
+    @keyframes spin{to{transform:rotate(360deg)}}
+
+    /* ── Sections ───────────────────────────────────────────── */
+    .examples-grid,.faq-grid,.policy-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+    .example-card,.faq-item,.policy-card{
+      padding:18px;border-radius:22px;
+      background:linear-gradient(180deg,rgba(255,255,255,.10),rgba(255,255,255,.05));
+      border:1px solid rgba(255,255,255,.11);box-shadow:0 14px 34px rgba(0,0,0,.16);
+    }
+    .faq-q{font-weight:950;margin-bottom:8px}
+    .faq-a,.policy-card p,.example-card p{color:var(--muted);line-height:1.9;margin:0}
+
+    /* ── Footer ──────────────────────────────────────────────── */
+    .footer{padding:78px 0 60px; margin-top:84px}
+    .footer-nav{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:18px}
+    .footer-box{padding:22px;border-radius:var(--radius-xl)}
+    .header-nav{display:flex;align-items:center;justify-content:center;gap:10px;flex:1 1 360px;flex-wrap:wrap}
+    .header-nav .tab-btn{padding:10px 18px}
+    .info-section{padding:34px 28px;border-radius:32px;scroll-margin-top:122px;background:linear-gradient(180deg,rgba(18,28,58,.72),rgba(9,16,38,.54));border:1px solid rgba(255,255,255,.08);box-shadow:0 20px 56px rgba(0,0,0,.16), inset 0 1px 0 rgba(255,255,255,.04)}
+    .info-section + .info-section{margin-top:122px}
+    .examples-grid,.faq-grid,.policy-grid{gap:18px}
+    .info-section .section-title{margin-bottom:18px}
+    .info-section .eyebrow{margin-bottom:10px}
+    .info-section .lead-inline{max-width:840px;margin:0 0 22px;color:var(--muted);line-height:1.9}
+    .country-city-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:15px;grid-column:1/-1}
+    .section-anchor{position:relative;top:-18px}
+    .back-to-top{position:fixed;right:22px;bottom:22px;width:52px;height:52px;border-radius:999px;border:1px solid rgba(255,255,255,.12);background:linear-gradient(180deg,rgba(10,16,34,.92),rgba(8,13,28,.84));color:var(--gold);display:grid;place-items:center;box-shadow:0 16px 38px rgba(0,0,0,.28), inset 0 1px 0 rgba(255,255,255,.05);z-index:80;opacity:0;pointer-events:none;transform:translateY(10px);transition:opacity .25s ease,transform .25s ease,border-color .25s ease}
+    .back-to-top.visible{opacity:1;pointer-events:auto;transform:translateY(0)}
+    .back-to-top:hover{border-color:rgba(255,215,106,.34)}
+    #countrySelect,
+    #birthDate,
+    input[type="date"]{
+      appearance:none;
+      -webkit-appearance:none;
+      color-scheme:dark;
+      background:linear-gradient(180deg,rgba(10,16,34,.86),rgba(8,13,28,.72)) !important;
+      background-color:transparent !important;
+      color:var(--text) !important;
+      -webkit-text-fill-color:var(--text) !important;
+      border:1px solid rgba(255,255,255,.13) !important;
+      border-radius:var(--radius-md) !important;
+      box-shadow:inset 0 1px 0 rgba(255,255,255,.03),0 6px 18px rgba(0,0,0,.14) !important;
+    }
+    #countrySelect{
+      background-image:linear-gradient(180deg,rgba(10,16,34,.86),rgba(8,13,28,.72)),url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23ffd76a' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E") !important;
+      background-color:transparent !important;
+      background-repeat:no-repeat,no-repeat !important;
+      background-position:0 0,right 16px center !important;
+      background-size:100% 100%,16px !important;
+      padding-right:42px !important;
+    }
+    body[dir="rtl"] #countrySelect{background-position:center center,left 16px center !important;padding-right:15px !important;padding-left:42px !important;}
+    #countrySelect option{background:#0d1530;color:#f8fbff}
+    #birthDate::-webkit-date-and-time-value,
+    #birthDate::-webkit-datetime-edit,
+    #birthDate::-webkit-datetime-edit-fields-wrapper,
+    #birthDate::-webkit-datetime-edit-text,
+    #birthDate::-webkit-datetime-edit-month-field,
+    #birthDate::-webkit-datetime-edit-day-field,
+    #birthDate::-webkit-datetime-edit-year-field{color:var(--text);background:transparent !important;}
+    #birthDate::-webkit-calendar-picker-indicator{opacity:1;filter:none;cursor:pointer;}
+    body.high-contrast #countrySelect,
+    body.high-contrast #birthDate,
+    body.high-contrast input[type="date"]{
+      background:linear-gradient(180deg,rgba(6,6,6,.96),rgba(14,14,14,.92)) !important;
+      background-color:transparent !important;
+      border-color:rgba(255,255,255,.16) !important;
+    }
+    body.high-contrast #countrySelect{
+      background-image:linear-gradient(180deg,rgba(6,6,6,.96),rgba(14,14,14,.92)),url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23ffd76a' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E") !important;
+      background-color:transparent !important;
+      background-repeat:no-repeat,no-repeat !important;
+      background-position:center center,right 16px center !important;
+      background-size:100% 100%,16px !important;
+    }
+    body.high-contrast[dir="rtl"] #countrySelect{background-position:center center,left 16px center !important;}
+    .adsense-note{
+      margin-top:14px;padding:15px 16px;border-radius:18px;
+      background:linear-gradient(135deg,rgba(255,215,106,.09),rgba(255,159,210,.06));
+      border:1px solid rgba(255,215,106,.16);color:var(--muted);
+      line-height:1.9;font-size:.95rem;box-shadow:inset 0 1px 0 rgba(255,255,255,.04);
+    }
+
+    /* ── Toast ───────────────────────────────────────────────── */
+    .toast{
+      position:fixed;left:50%;bottom:22px;transform:translateX(-50%);
+      z-index:99;min-width:260px;max-width:calc(100vw - 24px);
+      padding:14px 16px;border-radius:18px;
+      background:linear-gradient(180deg,rgba(9,14,30,.96),rgba(7,11,24,.94));
+      border:1px solid rgba(255,255,255,.12);box-shadow:0 24px 60px rgba(0,0,0,.35);
+      text-align:center;color:var(--text);transition:opacity .3s ease;
+    }
+    .toast.success{border-color:rgba(147,240,196,.24)}
+    .toast.error{border-color:rgba(255,157,157,.24)}
+
+    /* ── Responsive ─────────────────────────────────────────── */
+    @media(max-width:980px){
+      .hero,.search-result-layout,.examples-grid,.faq-grid,.policy-grid,.fun-stats-grid{grid-template-columns:1fr}
+    }
+
+    /* ── Tablet ──────────────────────────────────────────────── */
+    @media(max-width:768px){
+      .grid,.stats{grid-template-columns:1fr}
+      .display{max-width:none;font-size:clamp(2rem,8vw,3.2rem)}
+      .header{align-items:flex-start;gap:10px;padding:12px 14px}
+      .lang-select{min-width:100px;font-size:.85rem;padding:8px 30px 8px 12px}
+      .ghost-btn{padding:8px 12px;font-size:.85rem}
+      .fun-stats-grid{grid-template-columns:repeat(2,1fr)}
+      .share-row{flex-direction:column;gap:10px}
+      .share-row .share-btn{width:100%;justify-content:center}
+      .footer-nav{flex-wrap:wrap;gap:8px;justify-content:center}
+    }
+
+    /* ── Mobile ──────────────────────────────────────────────── */
+    @media(max-width:480px){
+      /* Layout */
+      .container{width:calc(100% - 16px)}
+      .header{
+        position:sticky;top:8px;margin-top:8px;
+        padding:10px 12px;border-radius:20px;
+        flex-direction:row;align-items:center;justify-content:space-between;
+        gap:8px;
+      }
+      .brand-logo{width:40px;height:40px;border-radius:12px}
+      .brand-logo::before{width:14px;height:14px;left:8px;top:7px}
+      .brand-logo::after{width:9px;height:9px;right:9px;bottom:8px}
+      .brand-text h1{font-size:1.05rem}
+      .brand-text p{font-size:.65rem;letter-spacing:.12em}
+      .header-actions{gap:6px}
+      .lang-select{min-width:80px;font-size:.78rem;padding:7px 26px 7px 10px}
+      .ghost-btn{padding:7px 10px;font-size:.78rem}
+
+      /* Hero */
+      .hero{padding:20px 0 16px;gap:16px}
+      .eyebrow{font-size:.72rem;margin-bottom:8px}
+      .display{font-size:clamp(1.8rem,7vw,2.6rem);letter-spacing:-.03em;line-height:1.05}
+      .lead{font-size:.95rem;margin:12px 0 14px;line-height:1.8}
+
+      /* Clock */
+      .clock-box{margin-bottom:14px}
+      .clock-wrap{padding:16px 12px}
+      .clock-time{font-size:clamp(1.6rem,6vw,2.4rem)}
+
+      /* Form */
+      .form-card{padding:14px}
+      .grid{gap:10px}
+      .field span{font-size:.88rem}
+      input,textarea,select{padding:12px 13px;font-size:.95rem;border-radius:14px}
+      .mini-btn{padding:10px 11px;font-size:.82rem;white-space:nowrap}
+      .form-footer{flex-direction:column;align-items:stretch;gap:10px}
+      .form-footer .small{text-align:center;font-size:.82rem}
+      .cta-btn{width:100%;text-align:center;padding:15px;font-size:1rem}
+
+      /* Side col */
+      .side-col{gap:12px}
+      .quote{font-size:.95rem;line-height:1.8;padding:16px}
+      .stats{grid-template-columns:repeat(2,1fr);gap:10px}
+      .stat strong{font-size:1.4rem;margin-bottom:4px}
+      .stat span{font-size:.82rem}
+
+      /* Results */
+      .section{padding:18px 0 32px}
+      .section-title{font-size:clamp(1.3rem,5vw,1.8rem)}
+      .globe-card{padding:10px}
+      #globe{border-radius:16px}
+      .result-panel{padding:14px}
+      .meta-label,.meta-value{font-size:.88rem}
+      .person-card{padding:13px;border-radius:18px}
+      .person-name{font-size:.98rem}
+      .person-location,.person-distance{font-size:.84rem}
+      .pill{font-size:.78rem;padding:6px 10px}
+
+      /* Fun stats */
+      .fun-stats-grid{grid-template-columns:repeat(2,1fr);gap:10px}
+      .fun-stat-card{padding:14px 10px}
+      .fun-stat-value{font-size:1.3rem}
+      .fun-stat-label{font-size:.78rem}
+
+      /* Famous people */
+      .famous-card{padding:12px;border-radius:16px;gap:10px}
+      .famous-emoji{font-size:1.6rem}
+      .famous-name{font-size:.95rem}
+      .famous-detail{font-size:.82rem}
+
+      /* Share buttons */
+      .share-row{flex-direction:column;gap:8px}
+      .share-btn{width:100%;justify-content:center;padding:12px 16px}
+
+      /* Messages */
+      .message-composer{padding:14px;border-radius:20px}
+      .message-item{padding:13px;border-radius:18px}
+      .message-author{font-size:.95rem}
+      .message-meta{font-size:.78rem}
+      .message-body{font-size:.9rem;line-height:1.7}
+
+      /* Examples */
+      .example-card{padding:18px}
+
+      /* FAQ */
+      .faq-item{padding:16px}
+      .faq-q{font-size:1rem}
+      .faq-a{font-size:.88rem}
+
+      /* Policy */
+      .policy-card{padding:16px}
+      .policy-card p{font-size:.9rem;line-height:1.8}
+
+      /* Footer */
+      .footer-nav{flex-wrap:wrap;gap:6px;justify-content:center}
+      .footer-nav .tab-btn{padding:8px 12px;font-size:.82rem}
+      .footer-box{padding:16px;border-radius:20px;text-align:center}
+      .footer-box div{font-size:.85rem}
+
+      /* Toast */
+      .toast{bottom:16px;left:12px;right:12px;width:auto;font-size:.9rem;padding:13px 16px;border-radius:16px}
+
+      /* Cooldown */
+      .cooldown-label{font-size:.78rem}
+    }
+
+    /* ── Very small screens (≤360px) ────────────────────────── */
+    @media(max-width:360px){
+      .display{font-size:1.7rem}
+      .brand-text h1{font-size:.95rem}
+      .lang-select{min-width:70px;font-size:.72rem}
+      .ghost-btn{padding:6px 8px;font-size:.72rem}
+      .fun-stats-grid{grid-template-columns:1fr}
+      .stats{grid-template-columns:1fr}
+    }
+
+    @media(prefers-reduced-motion:reduce){
+      *,*::before,*::after{animation:none !important;transition:none !important;scroll-behavior:auto !important}
+    }
+  </style>
+</head>
+
+<body dir="ltr">
+  <canvas id="stars" aria-hidden="true"></canvas>
+  <div class="orb a" aria-hidden="true"></div>
+  <div class="orb b" aria-hidden="true"></div>
+
+  <div class="container">
+
+    <!-- ── HEADER ───────────────────────────────────────────── -->
+    <header class="header glass">
+      <div class="brand">
+        <div class="brand-logo" aria-hidden="true"></div>
+        <div class="brand-text">
+          <p data-i18n="brandSub">magical birthday connections</p>
+          <h1>Twinzie</h1>
+        </div>
+      </div>
+      <nav class="header-nav" aria-label="Site sections">
+        <a class="tab-btn" href="#about" data-i18n="navAbout">About</a>
+        <a class="tab-btn" href="#faq" data-i18n="navFaq">FAQ</a>
+        <a class="tab-btn" href="#terms" data-i18n="navTerms">Terms</a>
+        <a class="tab-btn" href="#privacy" data-i18n="navPrivacy">Privacy</a>
+        <a class="tab-btn" href="#contact" data-i18n="navContact">Contact</a>
+      </nav>
+      <div class="header-actions">
+        <!-- Language selector — populated by JS from LANGUAGES list -->
+        <select id="langSelect" class="lang-select" aria-label="Language"></select>
+        <button id="contrastBtn" class="ghost-btn" type="button" data-i18n="contrastBtn">High Contrast</button>
+      </div>
+    </header>
+
+    <main>
+      <!-- ── HERO ─────────────────────────────────────────── -->
+      <section class="hero">
+        <div>
+          <p class="eyebrow" data-i18n="heroEyebrow">Find your birthday twin</p>
+          <h2 class="display" data-i18n="heroTitle">Discover people who share your exact birth date</h2>
+          <p class="lead" data-i18n="heroDesc">Enter your name, your birth date, and your location.</p>
+
+          <div class="card glass clock-box">
+            <div class="small" data-i18n="utcLabel">Your Local Time</div>
+            <div class="clock-wrap">
+              <div class="clock-time" id="utcClock">00:00:00</div>
+              <div class="clock-zone" id="clockZoneLabel">—</div>
+            </div>
+          </div>
+
+          <form id="searchForm" class="form-card glass" novalidate>
+            <div class="grid">
+              <label class="field">
+                <span data-i18n="nameLabel">Name</span>
+                <input id="userName" type="text" maxlength="60" required />
+              </label>
+              <label class="field">
+                <span data-i18n="birthDateLabel">Birth date</span>
+                <input id="birthDate" type="date" required />
+              </label>
+              <div class="country-city-grid">
+                <label class="field">
+                  <span data-i18n="countryLabel">Country</span>
+                  <select id="countrySelect" required></select>
+                </label>
+                <label class="field">
+                  <span data-i18n="cityLabel">City (optional)</span>
+                  <input id="cityInput" type="text" maxlength="80" />
+                </label>
+              </div>
+              <label class="field wide">
+                <span data-i18n="timezoneLabel">Timezone</span>
+                <div class="row">
+                  <input id="timezoneInput" class="grow" type="text" />
+                  <button id="detectTzBtn" class="mini-btn" type="button" data-i18n="detectTzBtn">Auto detect</button>
+                </div>
+                <div class="helper small" data-i18n="timezoneHelp">Auto-filled from your browser.</div>
+              </label>
+            </div>
+            <div class="form-footer">
+              <div class="small" data-i18n="privacyMini">Messages are public inside the site only.</div>
+              <button class="cta-btn" type="submit" data-i18n="searchBtn">Find my twin</button>
+            </div>
+          </form>
+        </div>
+
+        <aside class="side-col">
+          <div class="card glass quote" data-i18n="heroQuote">A sweet idea: somewhere in the world, someone may share the same beginning date as you.</div>
+          <div class="stats">
+            <div class="card glass stat">
+              <strong id="stat1Num">0</strong>
+              <span data-i18n="stat1Label">public messages on site</span>
+            </div>
+            <div class="card glass stat">
+              <strong id="stat2Num">0</strong>
+              <span data-i18n="stat2Label">active birth dates</span>
+            </div>
+          </div>
+        </aside>
+      </section>
+
+      <!-- ── RESULTS ───────────────────────────────────────── -->
+      <section id="resultsSection" class="section hidden">
+        <p class="eyebrow" data-i18n="resultsEyebrow">Search results</p>
+        <h3 class="section-title" data-i18n="resultsTitle">People who share your birth date</h3>
+
+        <div class="search-result-layout">
+          <div class="globe-card glass">
+            <canvas id="globe" width="900" height="560"></canvas>
+          </div>
+
+          <div class="result-panel glass">
+            <div class="meta-list">
+              <div class="meta-row">
+                <span class="meta-label" data-i18n="metaDateLabel">Date you searched</span>
+                <span class="meta-value" id="searchedDateText">—</span>
+              </div>
+              <div class="meta-row">
+                <span class="meta-label" data-i18n="metaLocationLabel">Your location</span>
+                <span class="meta-value" id="yourLocationText">—</span>
+              </div>
+              <div class="meta-row">
+                <span class="meta-label" data-i18n="metaCountLabel">Number of matches</span>
+                <span class="meta-value" id="matchCountText">—</span>
+              </div>
+            </div>
+
+            <div class="pill" id="searchSummaryPill">—</div>
+            <div class="candidates" id="candidatesList"></div>
+
+            <!-- Fun birthday stats -->
+            <div class="fun-stats-grid" id="funStatsGrid">
+              <div class="fun-stat-card glass">
+                <span class="fun-stat-icon">🌍</span>
+                <span class="fun-stat-value" id="rarityPct">—</span>
+                <span class="fun-stat-label" data-i18n="rarityLabel">of people share your birthday</span>
+              </div>
+              <div class="fun-stat-card glass">
+                <span class="fun-stat-icon">🎂</span>
+                <span class="fun-stat-value" id="dayOfYear">—</span>
+                <span class="fun-stat-label" data-i18n="dayOfYearLabel">day of the year</span>
+              </div>
+              <div class="fun-stat-card glass">
+                <span class="fun-stat-icon">⭐</span>
+                <span class="fun-stat-value" id="zodiacSign">—</span>
+                <span class="fun-stat-label" data-i18n="zodiacLabel">your zodiac sign</span>
+              </div>
+            </div>
+
+            <!-- Famous people -->
+            <div id="famousPeopleWrap" class="hidden" style="margin-top:18px">
+              <div class="eyebrow" style="margin-bottom:10px" data-i18n="famousEyebrow">Famous people born on your day</div>
+              <div class="famous-grid" id="famousList"></div>
+            </div>
+
+            <!-- Share section -->
+            <div class="share-section" id="shareSection">
+              <h4 data-i18n="shareTitle">Share your birthday twin!</h4>
+              <div class="share-buttons">
+                <button class="share-btn" id="shareTwitter" type="button">𝕏 Twitter</button>
+                <button class="share-btn" id="shareWhatsApp" type="button">💬 WhatsApp</button>
+                <button class="share-btn" id="shareCopy" type="button" data-i18n="shareCopy">📋 Copy link</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ── MESSAGE BOARD ────────────────────────────────── -->
+      <section id="messagesSection" class="section hidden">
+        <p class="eyebrow" data-i18n="messagesEyebrow">Public message board</p>
+        <h3 class="section-title" data-i18n="messagesTitle">Write a message for everyone searching the same date</h3>
+
+        <div class="message-board">
+          <div class="message-composer glass">
+            <div class="grid">
+              <label class="field">
+                <span data-i18n="composerNameLabel">Displayed name</span>
+                <input id="messageName" type="text" maxlength="60" />
+              </label>
+              <label class="field">
+                <span data-i18n="composerDateLabel">Message date</span>
+                <input id="messageDate" type="date" />
+              </label>
+              <label class="field wide">
+                <span data-i18n="composerTextLabel">Public message</span>
+                <textarea id="messageText" maxlength="500"></textarea>
+              </label>
+            </div>
+            <div class="form-footer">
+              <div>
+                <span class="char-count" id="charCount">0 / 500</span>
+                <div class="cooldown-bar-wrap" id="cooldownBarWrap">
+                  <div class="cooldown-bar" id="cooldownBar" style="width:100%"></div>
+                </div>
+                <div class="cooldown-label" id="cooldownLabel"></div>
+              </div>
+              <button id="saveMessageBtn" class="cta-btn" type="button" data-i18n="saveMessageBtn">Publish message</button>
+            </div>
+          </div>
+
+          <div class="message-list-card glass">
+            <div class="row" style="justify-content:space-between;margin-bottom:14px">
+              <div class="small" data-i18n="messageListIntro">Messages for the birth date you searched.</div>
+              <div class="pill" id="messageCountPill">0</div>
+            </div>
+            <div id="messagesList"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ── EXAMPLES ─────────────────────────────────────── -->
+      <section class="section info-section" id="examples">
+        <p class="eyebrow" data-i18n="examplesEyebrow">Lovely examples</p>
+        <h3 class="section-title" data-i18n="examplesTitle">Ways people might use Twinzie</h3>
+        <p class="lead-inline" data-i18n="examplesIntro">Quick realistic examples of how people might actually use the site.</p>
+        <div class="examples-grid">
+          <div class="example-card glass"><h4 data-i18n="ex1Title" style="margin-top:0">Example 1</h4><p data-i18n="ex1Text"></p></div>
+          <div class="example-card glass"><h4 data-i18n="ex2Title" style="margin-top:0">Example 2</h4><p data-i18n="ex2Text"></p></div>
+          <div class="example-card glass"><h4 data-i18n="ex3Title" style="margin-top:0">Example 3</h4><p data-i18n="ex3Text"></p></div>
+        </div>
+      </section>
+
+      <!-- ── ABOUT ────────────────────────────────────────── -->
+      <section class="section info-section" id="about">
+        <p class="eyebrow" data-i18n="aboutEyebrow">About</p>
+        <h3 class="section-title" data-i18n="aboutTitle">About Twinzie</h3>
+        <p class="lead-inline" data-i18n="aboutIntro">What Twinzie is, what it is not, and why the site exists.</p>
+        <div class="policy-grid">
+          <div class="policy-card glass"><p data-i18n="aboutText1"></p></div>
+          <div class="policy-card glass"><p data-i18n="aboutText2"></p></div>
+          <div class="policy-card glass"><p data-i18n="aboutText3"></p></div>
+        </div>
+      </section>
+
+      <!-- ── FAQ ──────────────────────────────────────────── -->
+      <section class="section info-section" id="faq">
+        <p class="eyebrow" data-i18n="faqEyebrow">FAQ</p>
+        <h3 class="section-title" data-i18n="faqTitle">Frequently asked questions</h3>
+        <p class="lead-inline" data-i18n="faqIntro">Short answers to the questions people usually ask before posting or searching.</p>
+        <div class="faq-grid">
+          <div class="faq-item glass"><div class="faq-q" data-i18n="faqQ1"></div><div class="faq-a" data-i18n="faqA1"></div></div>
+          <div class="faq-item glass"><div class="faq-q" data-i18n="faqQ2"></div><div class="faq-a" data-i18n="faqA2"></div></div>
+          <div class="faq-item glass"><div class="faq-q" data-i18n="faqQ3"></div><div class="faq-a" data-i18n="faqA3"></div></div>
+          <div class="faq-item glass"><div class="faq-q" data-i18n="faqQ4"></div><div class="faq-a" data-i18n="faqA4"></div></div>
+          <div class="faq-item glass"><div class="faq-q" data-i18n="faqQ5"></div><div class="faq-a" data-i18n="faqA5"></div></div>
+          <div class="faq-item glass"><div class="faq-q" data-i18n="faqQ6"></div><div class="faq-a" data-i18n="faqA6"></div></div>
+        </div>
+      </section>
+
+      <!-- ── TERMS ─────────────────────────────────────────── -->
+      <section class="section info-section" id="terms">
+        <p class="eyebrow" data-i18n="termsEyebrow">Terms</p>
+        <h3 class="section-title" data-i18n="termsTitle">Terms and conditions</h3>
+        <p class="lead-inline" data-i18n="termsIntro">Simple ground rules for using the public parts of Twinzie.</p>
+        <div class="policy-grid">
+          <div class="policy-card glass"><p data-i18n="termsText1"></p></div>
+          <div class="policy-card glass"><p data-i18n="termsText2"></p></div>
+          <div class="policy-card glass"><p data-i18n="termsText3"></p></div>
+        </div>
+      </section>
+
+      <!-- ── PRIVACY ───────────────────────────────────────── -->
+      <section class="section info-section" id="privacy">
+        <p class="eyebrow" data-i18n="privacyEyebrow">Privacy</p>
+        <h3 class="section-title" data-i18n="privacyTitle">Privacy policy</h3>
+        <p class="lead-inline" data-i18n="privacyIntro">A plain-language summary of what is stored and what should stay private.</p>
+        <div class="policy-grid">
+          <div class="policy-card glass"><p data-i18n="privacyText1"></p></div>
+          <div class="policy-card glass"><p data-i18n="privacyText2"></p></div>
+          <div class="policy-card glass"><p data-i18n="privacyText3"></p></div>
+        </div>
+      </section>
+
+      <!-- ── CONTACT ───────────────────────────────────────── -->
+      <section class="section info-section" id="contact">
+        <p class="eyebrow" data-i18n="contactEyebrow">Contact</p>
+        <h3 class="section-title" data-i18n="contactTitle">Contact us</h3>
+        <p class="lead-inline" data-i18n="contactIntro">The right place to reach out for help, moderation, or business questions.</p>
+        <div class="policy-grid">
+          <div class="policy-card glass"><p data-i18n="contactText1"></p></div>
+          <div class="policy-card glass"><p data-i18n="contactText2"></p></div>
+          <div class="policy-card glass"><p data-i18n="contactText3"></p></div>
+        </div>
+      </section>
+
+      <!-- ── FOOTER ────────────────────────────────────────── -->
+      <footer class="footer">
+        <div class="footer-box glass">
+          <div data-i18n="footerText">© 2026 Twinzie — full single-file demo.</div>
+          <div class="adsense-note" data-i18n="adsenseNote"></div>
+        </div>
+      </footer>
+    </main>
+  </div>
+
+  <button id="backToTopBtn" class="back-to-top" type="button" aria-label="Back to top">↑</button>
+  <div id="toast" class="toast hidden"></div>
+
+  <div id="reportModalBackdrop" class="report-modal-backdrop hidden" aria-hidden="true">
+    <div class="report-modal">
+      <h4>Report message</h4>
+      <p>Use this only for spam, harassment, hate, impersonation, sexual content, private information, or other unsafe content.</p>
+      <div id="reportMessagePreview" class="report-preview"></div>
+      <label class="field">
+        <span>Reason</span>
+        <select id="reportReason">
+          <option value="spam">Spam or promotion</option>
+          <option value="harassment">Harassment or bullying</option>
+          <option value="hate">Hate or discrimination</option>
+          <option value="sexual">Sexual or inappropriate content</option>
+          <option value="private_info">Private information</option>
+          <option value="impersonation">Impersonation or misleading content</option>
+          <option value="threats">Threats or self-harm</option>
+          <option value="other">Other</option>
+        </select>
+      </label>
+      <label class="field">
+        <span>Extra details (optional)</span>
+        <textarea id="reportDetails" maxlength="500" placeholder="Add a short note if it helps moderation."></textarea>
+      </label>
+      <div class="report-actions">
+        <button type="button" id="reportCancelBtn" class="ghost-btn">Cancel</button>
+        <button type="button" id="reportSubmitBtn" class="cta-btn">Submit report</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════════
+       JAVASCRIPT
+  ═══════════════════════════════════════════════════════════ -->
+  <script>
+  (() => {
+    'use strict';
+
+    /* ════════════════════════════════════════════════════════
+       CONFIG — Replace with your actual Supabase credentials
+    ════════════════════════════════════════════════════════ */
+    const SUPABASE_URL  = 'https://ybhywiimadlkvrgylrzc.supabase.co';
+    const SUPABASE_ANON = 'sb_publishable_wlz4PjJCa80WVGE5cDh_eQ_xKIo2Jvu';
+    const MESSAGES_TABLE = 'messages';
+    const PROFILES_TABLE = 'profiles';
+    const MAX_MESSAGES_PER_DATE = 50;  // DB query limit
+    const COOLDOWN_MS = 30_000;        // 30 seconds between posts
+    const MAX_MSG_LENGTH = 500;
+    const CACHE_TTL_MS = 5 * 60_000;  // 5-minute client cache per date
+
+    /* ════════════════════════════════════════════════════════
+       LANGUAGE DEFINITIONS
+       Each entry: [code, nativeName, dir ("ltr"|"rtl"), locale]
+       Full translation strings are in the I18N object below.
+    ════════════════════════════════════════════════════════ */
+    // Top 10 most spoken languages in the world + Filipino
+    const LANGUAGES = [
+      ['en', 'English',   'ltr', 'en'],
+      ['zh', '中文',       'ltr', 'zh'],
+      ['es', 'Español',   'ltr', 'es'],
+      ['ar', 'العربية',   'rtl', 'ar'],
+      ['fr', 'Français',  'ltr', 'fr'],
+      ['pt', 'Português', 'ltr', 'pt'],
+      ['ru', 'Русский',   'ltr', 'ru'],
+      ['ja', '日本語',     'ltr', 'ja'],
+      ['de', 'Deutsch',   'ltr', 'de'],
+      ['hi', 'हिन्दी',    'ltr', 'hi'],
+      ['tl', 'Filipino',  'ltr', 'tl'],
+    ];
+
+    /* ════════════════════════════════════════════════════════
+       I18N — Translation strings
+       Keys map 1-to-1 with data-i18n attributes in HTML.
+       Languages without a full entry fall back to English.
+    ════════════════════════════════════════════════════════ */
+    const I18N = {};
+
+    // ── English (base / fallback) ───────────────────────────
+    I18N.en = {
+      brandSub:'magical birthday connections',
+      contrastBtn:'High Contrast',
+      heroEyebrow:'Find your birthday twin',
+      heroTitle:'Discover people who share your exact birth date',
+      heroDesc:'Enter your name, your birth date, and your location. Twinzie will show you people who share your day, plus public messages connected to that date.',
+      utcLabel:'Your Local Time',
+      nameLabel:'Name', birthDateLabel:'Birth date',
+      countryLabel:'Country', cityLabel:'City (optional)', timezoneLabel:'Timezone',
+      detectTzBtn:'Auto detect',
+      timezoneHelp:'Filled automatically from your browser, you can edit it.',
+      privacyMini:'Messages are public inside the website only and are stored in Supabase.',
+      searchBtn:'Find my twin',
+      heroQuote:'A sweet idea: somewhere in the world, someone may share the same beginning date as you.',
+      stat1Label:'public messages on site', stat2Label:'active birth dates',
+      resultsEyebrow:'Search results', resultsTitle:'People who share your birth date',
+      metaDateLabel:'Date you searched', metaLocationLabel:'Your location', metaCountLabel:'Number of matches',
+      searchSummaryOne:'We found 1 person sharing your birth date',
+      searchSummaryMany:'We found {count} people sharing your birth date',
+      noMatches:'No one was found in the dataset for this date, but you can still publish a public message for that day.',
+      rarityLabel:'of people share your birthday',
+      dayOfYearLabel:'day of the year',
+      zodiacLabel:'your zodiac sign',
+      famousEyebrow:'Famous people born on your day',
+      shareTitle:'Share your birthday twin!',
+      shareCopy:'📋 Copy link',
+      shareCopied:'✅ Copied!',
+      messagesEyebrow:'Public message board', messagesTitle:'Write a message for everyone searching the same date',
+      composerNameLabel:'Displayed name', composerDateLabel:'Message date', composerTextLabel:'Public message',
+      saveMessageBtn:'Publish message',
+      messageListIntro:'The messages below belong to the birth date you searched.',
+      examplesEyebrow:'Lovely examples', examplesTitle:'Ways people might use Twinzie',
+      examplesIntro:'Quick realistic examples of how people might actually use the site.',
+      ex1Title:'Checking before a birthday trip', ex1Text:'Someone searches their date before traveling and ends up seeing a few public notes from people in the country they are visiting.',
+      ex2Title:'Leaving a note for future visitors', ex2Text:'A person drops a short message on their date so the next searcher finds something warm and human instead of an empty page.',
+      ex3Title:'Comparing dates with friends', ex3Text:'Friends try a few birthdays together, laugh at the overlap, and read the public messages tied to each day.',
+      aboutEyebrow:'About', aboutTitle:'About Twinzie',
+      aboutIntro:'What Twinzie is, what it is not, and why the site exists.',
+      aboutText1:'Twinzie is a lightweight discovery site built around one simple idea: people who share a birth date might enjoy finding each other.',
+      aboutText2:'Each date can have public messages, so the experience feels alive even when someone searches quietly months later.',
+      aboutText3:'It is meant to feel calm, friendly, and easy to understand — more like a thoughtful corner of the internet than a loud social feed.',
+      faqEyebrow:'FAQ', faqTitle:'Frequently asked questions',
+      faqIntro:'Short answers to the questions people usually ask before posting or searching.',
+      faqQ1:'Are all the matches real people?', faqA1:'The site can show both real database records and lightweight demo activity for the date you searched, so not every card is guaranteed to be a live person.',
+      faqQ2:'Are messages private?', faqA2:'No. Messages are public to anyone who searches the same birth date, so post only what you are comfortable sharing.',
+      faqQ3:'Are notifications sent?', faqA3:'No. Twinzie does not send alerts or direct messages in this version.',
+      faqQ4:'Can I use the site in different languages?', faqA4:'Yes. The interface is multilingual, and demo activity can appear in more than one language depending on the search.',
+      faqQ5:'Can I report a message?', faqA5:'Yes. Use the report option for spam, harassment, hate, impersonation, sexual content, private information, or anything else unsafe.',
+      faqQ6:'How is distance shown?', faqA6:'Distance is approximate and meant to give context, not precise location tracking.',
+      termsEyebrow:'Terms', termsTitle:'Terms and conditions',
+      termsIntro:'Simple ground rules for using the public parts of Twinzie.',
+      termsText1:'Use Twinzie respectfully. Do not post abusive, threatening, hateful, or unlawful content.',
+      termsText2:'Do not spam, impersonate someone else, or share private information that does not belong to you.',
+      termsText3:'Content may be limited, hidden, or removed when it breaks the rules or makes the site less safe for others.',
+      privacyEyebrow:'Privacy', privacyTitle:'Privacy policy',
+      privacyIntro:'A plain-language summary of what is stored and what should stay private.',
+      privacyText1:'Twinzie stores the information you choose to submit, such as your displayed name, searched date, location, and any public message you post.',
+      privacyText2:'Public messages can be seen by other people who search the same date, so avoid sharing phone numbers, addresses, or other sensitive details.',
+      privacyText3:'Reports may be reviewed for moderation and safety purposes when content appears abusive, misleading, or unsafe.',
+      contactEyebrow:'Contact', contactTitle:'Contact us',
+      contactIntro:'The right place to reach out for help, moderation, or business questions.',
+      contactText1:'General questions: hello@twinzie.com',
+      contactText2:'Partnerships and business: partners@twinzie.com',
+      contactText3:'Support and moderation: twinziesupport@gmail.com',
+      navAbout:'About', navFaq:'FAQ', navTerms:'Terms', navPrivacy:'Privacy', navContact:'Contact',
+      footerText:'© 2026 Twinzie. Built to help people discover others who share their birthday.',
+      adsenseNote:'Twinzie includes public messages, multilingual support, reporting, and searchable birthday pages in a single-file build.',
+      personDistance:'Approximately {km} km away from you',
+      personMessages:'{count} messages on this date',
+      publishedAt:'Published', noMessagesYet:'There are no public messages for this date yet.',
+      saveSuccess:'Your message was published.', saveError:'Please fill in the display name, message date, and message body.',
+      searchError:'Please fill in your name, birth date, and country.',
+      publicMessagesCount:'Messages: {count}',
+      autoGeneratedPerson:'Matching person',
+      placeholderName:'Example: Ahmad', placeholderCity:'Example: Yaoundé',
+      placeholderMessageName:'Your name or nickname',
+      placeholderMessageText:'Write a kind message for everyone born on this date...',
+      cooldownMsg:'Please wait {sec} seconds before posting again.',
+      spamMsg:'Your message contains hateful, harmful, or inappropriate content and cannot be published. Please keep it respectful 💛',
+      loadingMessages:'Loading messages…',
+      tooLongMsg:'Message too long. Maximum {max} characters.',
+    };
+
+    // ── Arabic ──────────────────────────────────────────────
+    I18N.ar = {
+      brandSub:'روابط ميلاد ساحرة', contrastBtn:'تباين عالٍ',
+      heroEyebrow:'ابحث عن توأم تاريخ ميلادك',
+      heroTitle:'اكتشف أشخاصًا يشاركونك نفس تاريخ الميلاد',
+      heroDesc:'أدخل اسمك وتاريخ ميلادك وموقعك. سيعرض لك Twinzie أشخاصًا يشاركونك نفس اليوم، مع رسائل عامة مرتبطة بهذا التاريخ.',
+      utcLabel:'توقيتك المحلي',
+      nameLabel:'الاسم', birthDateLabel:'تاريخ الميلاد',
+      countryLabel:'الدولة', cityLabel:'المدينة (اختياري)', timezoneLabel:'المنطقة الزمنية',
+      detectTzBtn:'كشف تلقائي',
+      timezoneHelp:'يتم تعبئتها تلقائيًا من المتصفح ويمكنك تعديلها.',
+      privacyMini:'الرسائل عامة داخل الموقع فقط، وتُحفظ في Supabase.',
+      searchBtn:'ابحث عن التوأم',
+      heroQuote:'فكرة لطيفة: ربما يوجد في العالم شخص يشاركك نفس يوم البداية.',
+      stat1Label:'رسائل عامة في الموقع', stat2Label:'تواريخ ميلاد نشطة',
+      resultsEyebrow:'نتائج البحث', resultsTitle:'أشخاص يشاركونك نفس تاريخ الميلاد',
+      metaDateLabel:'التاريخ الذي بحثت عنه', metaLocationLabel:'موقعك', metaCountLabel:'عدد المطابقات',
+      searchSummaryOne:'تم العثور على شخص واحد يشاركك نفس التاريخ',
+      searchSummaryMany:'تم العثور على {count} أشخاص يشاركونك نفس التاريخ',
+      noMatches:'لم نجد أحدًا لهذا التاريخ، لكن يمكنك نشر رسالة عامة لهذا اليوم.',
+      rarityLabel:'من الناس يشاركونك تاريخ ميلادك',
+      dayOfYearLabel:'يوم من السنة',
+      zodiacLabel:'برجك الفلكي',
+      famousEyebrow:'مشاهير وُلدوا في يومك',
+      shareTitle:'شارك توأم عيد ميلادك!',
+      shareCopy:'📋 نسخ الرابط', shareCopied:'✅ تم النسخ!',
+      messagesEyebrow:'لوحة الرسائل العامة', messagesTitle:'اكتب رسالة لكل من يبحث عن نفس التاريخ',
+      composerNameLabel:'الاسم الظاهر', composerDateLabel:'تاريخ الرسالة', composerTextLabel:'الرسالة العامة',
+      saveMessageBtn:'نشر الرسالة',
+      messageListIntro:'الرسائل المعروضة تخص تاريخ الميلاد الذي بحثت عنه.',
+      examplesEyebrow:'أمثلة جميلة', examplesTitle:'طرق واقعية يمكن للناس استخدام Twinzie بها',
+      examplesIntro:'أمثلة سريعة توضّح كيف قد يستخدم الناس الموقع فعلًا.',
+      ex1Title:'البحث قبل السفر', ex1Text:'شخص يبحث عن تاريخه قبل رحلة ويجد رسائل عامة من أشخاص وُلدوا في اليوم نفسه داخل البلد الذي سيزوره.',
+      ex2Title:'ترك رسالة لزائر لاحق', ex2Text:'مستخدم يكتب ملاحظة قصيرة على تاريخه حتى لا يجد الزائر التالي صفحة فارغة تمامًا.',
+      ex3Title:'مقارنة التواريخ مع الأصدقاء', ex3Text:'مجموعة أصدقاء تجرّب أكثر من تاريخ وتقرأ الرسائل المرتبطة بكل يوم.',
+      aboutEyebrow:'حول', aboutTitle:'عن Twinzie',
+      aboutIntro:'ما هو Twinzie، وما الذي يقدمه، ولماذا أُنشئ أصلًا.',
+      aboutText1:'Twinzie موقع خفيف وبسيط لفكرة واحدة: العثور على أشخاص يشاركونك نفس تاريخ الميلاد.',
+      aboutText2:'لكل تاريخ مساحة رسائل عامة صغيرة حتى يشعر الزائر أن الصفحة حيّة وليست جامدة.',
+      aboutText3:'الهدف أن يكون المكان هادئًا وواضحًا وممتعًا، لا شبكة اجتماعية مزعجة.',
+      faqEyebrow:'الأسئلة الشائعة', faqTitle:'الأسئلة الشائعة',
+      faqIntro:'إجابات قصيرة عن أكثر الأمور التي قد يسأل عنها الزائر قبل البحث أو النشر.',
+      faqQ1:'هل كل النتائج حقيقية؟', faqA1:'قد ترى مزيجًا من بيانات حقيقية موجودة في قاعدة البيانات ونشاط عرض تجريبي خفيف مرتبط بالتاريخ الذي بحثت عنه.',
+      faqQ2:'هل الرسائل خاصة؟', faqA2:'لا. الرسائل عامة لأي شخص يبحث عن نفس تاريخ الميلاد.',
+      faqQ3:'هل يرسل الموقع إشعارات؟', faqA3:'لا، هذه النسخة لا ترسل إشعارات أو رسائل خاصة.',
+      faqQ4:'هل يمكن استخدام الموقع بلغات مختلفة؟', faqA4:'نعم، الواجهة متعددة اللغات ويمكن أن تظهر الرسائل التجريبية بأكثر من لغة.',
+      faqQ5:'هل يمكن الإبلاغ عن رسالة؟', faqA5:'نعم. استخدم الإبلاغ مع الرسائل المزعجة أو المسيئة أو المضللة أو غير الآمنة.',
+      faqQ6:'كيف تُحسب المسافة؟', faqA6:'المسافة تقريبية وهدفها إعطاء إحساس عام بالقرب أو البعد فقط.',
+      termsEyebrow:'الشروط', termsTitle:'الشروط والأحكام',
+      termsIntro:'قواعد بسيطة لاستخدام الأجزاء العامة من Twinzie.',
+      termsText1:'استخدم Twinzie باحترام، ولا تنشر محتوى مسيئًا أو مهددًا أو مخالفًا للقانون.',
+      termsText2:'لا ترسل رسائل مزعجة، ولا تنتحل شخصية غيرك، ولا تنشر معلومات خاصة لا تخصك.',
+      termsText3:'قد تُخفى أو تُزال الرسائل التي تخرق القواعد أو تجعل الموقع أقل أمانًا للآخرين.',
+      privacyEyebrow:'الخصوصية', privacyTitle:'سياسة الخصوصية',
+      privacyIntro:'ملخص واضح عمّا يُخزَّن وما الذي يجب أن يبقى خاصًا.',
+      privacyText1:'يخزّن Twinzie المعلومات التي تختار إدخالها، مثل الاسم الظاهر والتاريخ والموقع والرسالة العامة.',
+      privacyText2:'بما أن الرسائل عامة، تجنّب نشر أرقام الهواتف أو العناوين أو أي تفاصيل حساسة.',
+      privacyText3:'قد تتم مراجعة البلاغات لأغراض السلامة والإشراف عندما يبدو المحتوى مسيئًا أو مضللًا أو غير آمن.',
+      contactEyebrow:'التواصل', contactTitle:'تواصل معنا',
+      contactIntro:'المكان المناسب لطلب المساعدة أو الإبلاغ أو الاستفسارات التجارية.',
+      contactText1:'الأسئلة العامة: hello@twinzie.com',
+      contactText2:'الشراكات والأعمال: partners@twinzie.com',
+      contactText3:'الدعم والإشراف: twinziesupport@gmail.com',
+      navAbout:'حول', navFaq:'الأسئلة', navTerms:'الشروط', navPrivacy:'الخصوصية', navContact:'التواصل',
+      footerText:'© 2026 Twinzie — نسخة عرض كاملة بملف واحد.',
+      adsenseNote:'هذه الصفحة تحتوي على تصميم قوي، ودعم لغات متعددة، وأقسام معلوماتية أساسية.',
+      personDistance:'يبعد عنك تقريبًا {km} كم',
+      personMessages:'{count} رسالة على هذا التاريخ',
+      publishedAt:'نُشرت', noMessagesYet:'لا توجد رسائل عامة لهذا التاريخ حتى الآن.',
+      saveSuccess:'تم نشر الرسالة داخل الموقع.', saveError:'يرجى تعبئة الاسم وتاريخ الرسالة والرسالة.',
+      searchError:'يرجى تعبئة الاسم وتاريخ الميلاد والموقع.',
+      publicMessagesCount:'عدد الرسائل: {count}',
+      autoGeneratedPerson:'شخص مطابق',
+      placeholderName:'مثال: أحمد', placeholderLocation:'مثال: عمّان، الأردن',
+      placeholderMessageName:'اسمك أو اسم مستعار',
+      placeholderMessageText:'اكتب رسالة لطيفة لكل من وُلد في هذا اليوم...',
+      cooldownMsg:'الرجاء الانتظار {sec} ثانية قبل النشر مرة أخرى.',
+      spamMsg:'رسالتك تحتوي على محتوى غير مسموح به.',
+      loadingMessages:'جارٍ تحميل الرسائل…',
+      tooLongMsg:'الرسالة طويلة جدًا. الحد الأقصى {max} حرفًا.',
+    };
+
+    // ── Turkish ─────────────────────────────────────────────
+    I18N.fr = {
+      brandSub:'connexions d\'anniversaire magiques', contrastBtn:'Contraste élevé',
+      heroEyebrow:'Trouvez votre jumeau d\'anniversaire', heroTitle:'Découvrez des personnes qui partagent votre date de naissance exacte',
+      heroDesc:'Entrez votre nom, votre date de naissance et votre localisation.',
+      utcLabel:'Heure locale', nameLabel:'Nom', birthDateLabel:'Date de naissance',
+      countryLabel:'Pays', cityLabel:'Ville (optionnel)', timezoneLabel:'Fuseau horaire',
+      detectTzBtn:'Détection auto', timezoneHelp:'Rempli automatiquement depuis votre navigateur.',
+      privacyMini:'Les messages sont publics et stockés dans Supabase.',
+      searchBtn:'Trouver mon jumeau',
+      heroQuote:'Une belle idée : quelque part dans le monde, quelqu\'un partage peut-être la même date que vous.',
+      stat1Label:'messages publics sur le site', stat2Label:'dates de naissance actives',
+      resultsEyebrow:'Résultats de recherche', resultsTitle:'Personnes qui partagent votre date de naissance',
+      metaDateLabel:'Date recherchée', metaLocationLabel:'Votre localisation', metaCountLabel:'Nombre de correspondances',
+      searchSummaryOne:'1 personne partageant votre date de naissance trouvée',
+      searchSummaryMany:'{count} personnes partageant votre date de naissance trouvées',
+      noMatches:'Personne trouvé pour cette date, mais vous pouvez publier un message.',
+      rarityLabel:'des gens partagent votre anniversaire', dayOfYearLabel:'jour de l\'année', zodiacLabel:'votre signe zodiacal',
+      famousEyebrow:'Célébrités nées ce jour',
+      shareTitle:'Partagez votre jumeau d\'anniversaire !', shareCopy:'📋 Copier le lien', shareCopied:'✅ Copié !',
+      messagesEyebrow:'Tableau de messages public', messagesTitle:'Écrivez un message pour tous ceux qui recherchent la même date',
+      composerNameLabel:'Nom affiché', composerDateLabel:'Date du message', composerTextLabel:'Message public',
+      saveMessageBtn:'Publier le message', messageListIntro:'Les messages ci-dessous appartiennent à la date de naissance que vous avez recherchée.',
+      examplesEyebrow:'Beaux exemples', examplesTitle:'Façons dont les gens pourraient utiliser Twinzie',
+      ex1Title:'Exemple 1', ex1Text:'Un utilisateur recherche sa date de naissance et écrit un message sympa.',
+      ex2Title:'Exemple 2', ex2Text:'Quelqu\'un explore des correspondances de différentes villes.',
+      ex3Title:'Exemple 3', ex3Text:'Un visiteur passe d\'une langue à l\'autre.',
+      aboutEyebrow:'À propos', aboutTitle:'À propos de Twinzie',
+      aboutText1:'Twinzie est un concept social léger basé sur la recherche de personnes partageant votre date de naissance.',
+      aboutText2:'Les messages sont stockés dans Supabase.',
+      aboutText3:'Le design est multilingue, moderne et prêt à évoluer.',
+      faqEyebrow:'FAQ', faqTitle:'Questions fréquemment posées',
+      faqQ1:'Les résultats sont-ils réels ?', faqA1:'Les personnes correspondantes sont des données de démo.',
+      faqQ2:'Les messages sont-ils privés ?', faqA2:'Non, ils sont publics sur le site.',
+      faqQ3:'Des notifications sont-elles envoyées ?', faqA3:'Non.',
+      faqQ4:'Peut-on utiliser plusieurs langues ?', faqA4:'Oui, plus de 50 langues sont supportées.',
+      faqQ5:'Le site est-il prêt pour les publicités ?', faqA5:'Il inclut les sections de contenu essentielles.',
+      faqQ6:'Comment la distance est-elle calculée ?', faqA6:'La distance est approximative.',
+      termsEyebrow:'CGU', termsTitle:'Conditions générales d\'utilisation',
+      termsText1:'En utilisant Twinzie, vous acceptez de ne pas publier de contenu abusif.',
+      termsText2:'Cette version est une démo front-end.', termsText3:'Une future version inclurait la modération.',
+      privacyEyebrow:'Confidentialité', privacyTitle:'Politique de confidentialité',
+      privacyText1:'Les messages sont stockés dans Supabase.', privacyText2:'Une future version définirait clairement la gestion des données.',
+      privacyText3:'Évitez de publier des informations personnelles sensibles.',
+      contactEyebrow:'Contact', contactTitle:'Nous contacter',
+      contactText1:'Contact administratif : admin@example.com', contactText2:'Publicités : ads@example.com', contactText3:'Support : twinziesupport@gmail.com',
+      navAbout:'À propos', navFaq:'FAQ', navTerms:'CGU', navPrivacy:'Confidentialité', navContact:'Contact',
+      footerText:'© 2026 Twinzie — démo complète mono-fichier.',
+      adsenseNote:'Cette page inclut un design visuel fort et un contenu multilingue.',
+      personDistance:'Environ {km} km de vous', personMessages:'{count} messages pour cette date',
+      publishedAt:'Publié', noMessagesYet:'Aucun message pour cette date pour l\'instant.',
+      saveSuccess:'Votre message a été publié.', saveError:'Veuillez remplir tous les champs.',
+      searchError:'Veuillez remplir votre nom, date de naissance et localisation.',
+      publicMessagesCount:'Nombre de messages : {count}', autoGeneratedPerson:'Personne correspondante',
+      placeholderName:'Exemple : Jean', placeholderLocation:'Exemple : Paris, France',
+      placeholderMessageName:'Votre nom ou pseudonyme',
+      placeholderMessageText:'Écrivez un message pour tous ceux nés ce jour...',
+      cooldownMsg:'Attendez {sec} secondes avant de poster.', spamMsg:'Votre message contient du contenu non autorisé.',
+      loadingMessages:'Chargement des messages…', tooLongMsg:'Message trop long. Maximum {max} caractères.',
+    };
+
+    // ── Spanish ─────────────────────────────────────────────
+    I18N.es = {
+      brandSub:'conexiones mágicas de cumpleaños', contrastBtn:'Alto contraste',
+      heroEyebrow:'Encuentra tu gemelo de cumpleaños', heroTitle:'Descubre personas que comparten tu fecha de nacimiento exacta',
+      heroDesc:'Ingresa tu nombre, fecha de nacimiento y ubicación.',
+      utcLabel:'Tu hora local', nameLabel:'Nombre', birthDateLabel:'Fecha de nacimiento',
+      countryLabel:'País', cityLabel:'Ciudad (opcional)', timezoneLabel:'Zona horaria',
+      detectTzBtn:'Detectar automáticamente', timezoneHelp:'Se rellena automáticamente desde tu navegador.',
+      privacyMini:'Los mensajes son públicos y se almacenan en Supabase.',
+      searchBtn:'Encontrar mi gemelo',
+      heroQuote:'Una idea encantadora: en algún lugar del mundo, alguien puede compartir la misma fecha que tú.',
+      stat1Label:'mensajes públicos en el sitio', stat2Label:'fechas de nacimiento activas',
+      resultsEyebrow:'Resultados de búsqueda', resultsTitle:'Personas que comparten tu fecha de nacimiento',
+      metaDateLabel:'Fecha que buscaste', metaLocationLabel:'Tu ubicación', metaCountLabel:'Número de coincidencias',
+      searchSummaryOne:'Encontramos 1 persona que comparte tu fecha de nacimiento',
+      searchSummaryMany:'Encontramos {count} personas que comparten tu fecha de nacimiento',
+      noMatches:'No se encontró nadie para esta fecha, pero puedes publicar un mensaje.',
+      rarityLabel:'de la gente comparte tu cumpleaños', dayOfYearLabel:'día del año', zodiacLabel:'tu signo zodiacal',
+      famousEyebrow:'Famosos nacidos en tu día',
+      shareTitle:'¡Comparte tu gemelo de cumpleaños!', shareCopy:'📋 Copiar enlace', shareCopied:'✅ ¡Copiado!',
+      messagesEyebrow:'Tablero de mensajes público', messagesTitle:'Escribe un mensaje para todos los que buscan la misma fecha',
+      composerNameLabel:'Nombre mostrado', composerDateLabel:'Fecha del mensaje', composerTextLabel:'Mensaje público',
+      saveMessageBtn:'Publicar mensaje', messageListIntro:'Los mensajes de abajo pertenecen a la fecha de nacimiento que buscaste.',
+      examplesEyebrow:'Ejemplos reales', examplesTitle:'Formas reales de usar Twinzie',
+      examplesIntro:'Ejemplos rápidos de cómo la gente podría usar el sitio de verdad.',
+      ex1Title:'Buscar antes de viajar', ex1Text:'Alguien revisa su fecha antes de un viaje y encuentra mensajes públicos de personas nacidas ese mismo día en el país que va a visitar.',
+      ex2Title:'Dejar una nota para otra persona', ex2Text:'Un visitante deja un mensaje corto para que la próxima persona no encuentre una página vacía.',
+      ex3Title:'Comparar fechas con amigos', ex3Text:'Un grupo prueba varios cumpleaños y termina leyendo los mensajes públicos de cada fecha.',
+      aboutEyebrow:'Acerca de', aboutTitle:'Acerca de Twinzie',
+      aboutIntro:'Qué es Twinzie, qué no es, y por qué existe el sitio.',
+      aboutText1:'Twinzie es un sitio ligero basado en una idea simple: a veces es bonito encontrar a personas que comparten tu fecha de nacimiento.',
+      aboutText2:'Cada fecha puede tener mensajes públicos para que la experiencia se sienta viva incluso cuando alguien busca meses después.',
+      aboutText3:'La idea es que el sitio se sienta tranquilo, claro y humano, no como una red social ruidosa.',
+      faqEyebrow:'FAQ', faqTitle:'Preguntas frecuentes',
+      faqIntro:'Respuestas cortas a las dudas más comunes antes de buscar o publicar.',
+      faqQ1:'¿Todos los resultados son personas reales?', faqA1:'El sitio puede mostrar una mezcla de registros reales de la base de datos y actividad de demostración ligera para la fecha que buscaste.',
+      faqQ2:'¿Los mensajes son privados?', faqA2:'No. Los mensajes son públicos para cualquiera que busque la misma fecha.',
+      faqQ3:'¿Se envían notificaciones?', faqA3:'No, esta versión no envía alertas ni mensajes directos.',
+      faqQ4:'¿Puedo usar el sitio en varios idiomas?', faqA4:'Sí. La interfaz es multilingüe y la actividad de demostración puede aparecer en más de un idioma.',
+      faqQ5:'¿Puedo reportar un mensaje?', faqA5:'Sí. Usa la opción de reporte para spam, acoso, odio, suplantación, contenido sexual, información privada u otro contenido inseguro.',
+      faqQ6:'¿Cómo se calcula la distancia?', faqA6:'La distancia es aproximada y solo sirve como referencia general.',
+      termsEyebrow:'Términos', termsTitle:'Términos y condiciones',
+      termsIntro:'Reglas simples para usar las partes públicas de Twinzie.',
+      termsText1:'Usa Twinzie con respeto. No publiques contenido abusivo, amenazante, ilegal o de odio.',
+      termsText2:'No hagas spam, no suplantes a otras personas y no compartas información privada que no sea tuya.',
+      termsText3:'El contenido puede limitarse, ocultarse o eliminarse cuando rompa las reglas o vuelva el sitio menos seguro.',
+      privacyEyebrow:'Privacidad', privacyTitle:'Política de privacidad',
+      privacyIntro:'Un resumen claro de lo que se guarda y de lo que debería mantenerse privado.',
+      privacyText1:'Twinzie guarda la información que eliges enviar, como tu nombre visible, la fecha buscada, la ubicación y cualquier mensaje público.',
+      privacyText2:'Como los mensajes son públicos, evita compartir teléfonos, direcciones u otros datos sensibles.',
+      privacyText3:'Los reportes pueden revisarse por motivos de moderación y seguridad cuando el contenido parezca abusivo, engañoso o inseguro.',
+      contactEyebrow:'Contacto', contactTitle:'Contáctanos',
+      contactIntro:'El lugar correcto para pedir ayuda, reportar algo o hablar de negocios.',
+      contactText1:'Preguntas generales: hello@twinzie.com', contactText2:'Negocios y alianzas: partners@twinzie.com', contactText3:'Soporte y moderación: twinziesupport@gmail.com',
+      navAbout:'Acerca de', navFaq:'FAQ', navTerms:'Términos', navPrivacy:'Privacidad', navContact:'Contacto',
+      footerText:'© 2026 Twinzie — demo completa de archivo único.',
+      adsenseNote:'Esta página incluye un diseño visual sólido y contenido multilingüe.',
+      personDistance:'Aproximadamente {km} km de ti', personMessages:'{count} mensajes en esta fecha',
+      publishedAt:'Publicado', noMessagesYet:'Aún no hay mensajes para esta fecha.',
+      saveSuccess:'Tu mensaje fue publicado.', saveError:'Por favor completa todos los campos.',
+      searchError:'Por favor completa tu nombre, fecha de nacimiento y ubicación.',
+      publicMessagesCount:'Cantidad de mensajes: {count}', autoGeneratedPerson:'Persona coincidente',
+      placeholderName:'Ejemplo: Carlos', placeholderLocation:'Ejemplo: Madrid, España',
+      placeholderMessageName:'Tu nombre o apodo',
+      placeholderMessageText:'Escribe un mensaje amable para todos los nacidos en esta fecha...',
+      cooldownMsg:'Espera {sec} segundos antes de publicar.', spamMsg:'Tu mensaje contiene contenido no permitido.',
+      loadingMessages:'Cargando mensajes…', tooLongMsg:'Mensaje demasiado largo. Máximo {max} caracteres.',
+    };
+
+    // ── German ──────────────────────────────────────────────
+    I18N.de = {
+      brandSub:'magische Geburtstags-Verbindungen', contrastBtn:'Hoher Kontrast',
+      heroEyebrow:'Finden Sie Ihren Geburtstags-Zwilling', heroTitle:'Entdecken Sie Menschen, die Ihr genaues Geburtsdatum teilen',
+      heroDesc:'Geben Sie Ihren Namen, Ihr Geburtsdatum und Ihren Standort ein.',
+      utcLabel:'Deine Ortszeit', nameLabel:'Name', birthDateLabel:'Geburtsdatum',
+      locationLabel:'Land oder Stadt', timezoneLabel:'Zeitzone',
+      detectTzBtn:'Auto-Erkennung', timezoneHelp:'Wird automatisch aus Ihrem Browser gefüllt.',
+      privacyMini:'Nachrichten sind öffentlich und werden in Supabase gespeichert.',
+      searchBtn:'Meinen Zwilling finden',
+      heroQuote:'Eine schöne Idee: Irgendwo auf der Welt teilt vielleicht jemand dasselbe Datum wie Sie.',
+      stat1Label:'öffentliche Nachrichten', stat2Label:'aktive Geburtsdaten',
+      resultsEyebrow:'Suchergebnisse', resultsTitle:'Personen, die Ihr Geburtsdatum teilen',
+      metaDateLabel:'Gesuchtes Datum', metaLocationLabel:'Ihr Standort', metaCountLabel:'Anzahl der Treffer',
+      searchSummaryOne:'1 Person gefunden, die Ihr Geburtsdatum teilt',
+      searchSummaryMany:'{count} Personen gefunden, die Ihr Geburtsdatum teilen',
+      noMatches:'Für dieses Datum keine Person gefunden, aber Sie können eine Nachricht veröffentlichen.',
+      rarityLabel:'teilen Ihren Geburtstag', dayOfYearLabel:'Tag des Jahres', zodiacLabel:'Ihr Sternzeichen',
+      famousEyebrow:'Berühmte Menschen, die an Ihrem Tag geboren wurden',
+      shareTitle:'Teilen Sie Ihren Geburtstags-Zwilling!', shareCopy:'📋 Link kopieren', shareCopied:'✅ Kopiert!',
+      messagesEyebrow:'Öffentliches Nachrichtenbrett', messagesTitle:'Schreiben Sie eine Nachricht für alle, die dasselbe Datum suchen',
+      composerNameLabel:'Angezeigter Name', composerDateLabel:'Nachrichtendatum', composerTextLabel:'Öffentliche Nachricht',
+      saveMessageBtn:'Nachricht veröffentlichen', messageListIntro:'Die Nachrichten gehören zum gesuchten Geburtsdatum.',
+      examplesEyebrow:'Schöne Beispiele', examplesTitle:'Wie Menschen Twinzie nutzen könnten',
+      ex1Title:'Beispiel 1', ex1Text:'Ein Nutzer sucht sein Geburtsdatum und schreibt eine nette Nachricht.',
+      ex2Title:'Beispiel 2', ex2Text:'Jemand erkundet Treffer aus verschiedenen Städten.',
+      ex3Title:'Beispiel 3', ex3Text:'Ein Besucher wechselt zwischen mehreren Sprachen.',
+      aboutEyebrow:'Über uns', aboutTitle:'Über Twinzie',
+      aboutText1:'Twinzie ist ein leichtes soziales Konzept.',
+      aboutText2:'Nachrichten werden in Supabase gespeichert.',
+      aboutText3:'Das Design ist mehrsprachig und modern.',
+      faqEyebrow:'FAQ', faqTitle:'Häufig gestellte Fragen',
+      faqQ1:'Sind die Ergebnisse echt?', faqA1:'Die übereinstimmenden Personen sind Demo-Daten.',
+      faqQ2:'Sind Nachrichten privat?', faqA2:'Nein, sie sind öffentlich.',
+      faqQ3:'Werden Benachrichtigungen gesendet?', faqA3:'Nein.',
+      faqQ4:'Kann ich mehr als eine Sprache verwenden?', faqA4:'Ja, über 50 Sprachen werden unterstützt.',
+      faqQ5:'Ist die Website bereit für Anzeigen?', faqA5:'Die Kerninhaltsbereiche sind vorhanden.',
+      faqQ6:'Wie wird die Entfernung berechnet?', faqA6:'Die Entfernung ist ungefähr.',
+      termsEyebrow:'AGB', termsTitle:'Allgemeine Geschäftsbedingungen',
+      termsText1:'Sie stimmen zu, keine missbräuchlichen Inhalte zu veröffentlichen.',
+      termsText2:'Diese Version ist eine Demo.', termsText3:'Eine zukünftige Version könnte Moderation enthalten.',
+      privacyEyebrow:'Datenschutz', privacyTitle:'Datenschutzrichtlinie',
+      privacyText1:'Nachrichten werden in Supabase gespeichert.', privacyText2:'Eine zukünftige Version würde die Datenverwaltung klar definieren.',
+      privacyText3:'Bitte keine sensiblen Daten in öffentlichen Nachrichten.',
+      contactEyebrow:'Kontakt', contactTitle:'Kontaktieren Sie uns',
+      contactText1:'Verwaltungskontakt: admin@example.com', contactText2:'Werbung: ads@example.com', contactText3:'Support: twinziesupport@gmail.com',
+      navAbout:'Über uns', navFaq:'FAQ', navTerms:'AGB', navPrivacy:'Datenschutz', navContact:'Kontakt',
+      footerText:'© 2026 Twinzie — vollständige Einzeldatei-Demo.',
+      adsenseNote:'Diese Seite enthält ein starkes visuelles Design und mehrsprachige Inhalte.',
+      personDistance:'Ungefähr {km} km von Ihnen', personMessages:'{count} Nachrichten für dieses Datum',
+      publishedAt:'Veröffentlicht', noMessagesYet:'Noch keine Nachrichten für dieses Datum.',
+      saveSuccess:'Ihre Nachricht wurde veröffentlicht.', saveError:'Bitte füllen Sie alle Felder aus.',
+      searchError:'Bitte geben Sie Ihren Namen, Ihr Geburtsdatum und Ihren Standort ein.',
+      publicMessagesCount:'Nachrichtenanzahl: {count}', autoGeneratedPerson:'Übereinstimmende Person',
+      placeholderName:'Beispiel: Hans', placeholderLocation:'Beispiel: Berlin, Deutschland',
+      placeholderMessageName:'Ihr Name oder Spitzname',
+      placeholderMessageText:'Schreiben Sie eine nette Nachricht für alle, die an diesem Datum geboren sind...',
+      cooldownMsg:'Bitte warten Sie {sec} Sekunden.', spamMsg:'Ihre Nachricht enthält unerlaubten Inhalt.',
+      loadingMessages:'Nachrichten werden geladen…', tooLongMsg:'Nachricht zu lang. Maximal {max} Zeichen.',
+    };
+
+    // ── Russian ─────────────────────────────────────────────
+    I18N.ru = {
+      brandSub:'волшебные связи дней рождения', contrastBtn:'Высокий контраст',
+      heroEyebrow:'Найдите своего близнеца по дню рождения', heroTitle:'Откройте людей, разделяющих вашу точную дату рождения',
+      heroDesc:'Введите ваше имя, дату рождения и местоположение.',
+      utcLabel:'Ваше местное время', nameLabel:'Имя', birthDateLabel:'Дата рождения',
+      locationLabel:'Страна или город', timezoneLabel:'Часовой пояс',
+      detectTzBtn:'Определить автоматически', timezoneHelp:'Заполняется автоматически из браузера.',
+      privacyMini:'Сообщения публичны и хранятся в Supabase.',
+      searchBtn:'Найти моего близнеца',
+      heroQuote:'Прекрасная идея: где-то в мире кто-то разделяет ту же дату начала, что и вы.',
+      stat1Label:'публичных сообщений на сайте', stat2Label:'активных дат рождения',
+      resultsEyebrow:'Результаты поиска', resultsTitle:'Люди, разделяющие вашу дату рождения',
+      metaDateLabel:'Искомая дата', metaLocationLabel:'Ваше местоположение', metaCountLabel:'Количество совпадений',
+      searchSummaryOne:'Найден 1 человек, разделяющий вашу дату рождения',
+      searchSummaryMany:'Найдено {count} человек, разделяющих вашу дату рождения',
+      noMatches:'Для этой даты никого не найдено, но вы можете опубликовать сообщение.',
+      rarityLabel:'людей разделяют ваш день рождения', dayOfYearLabel:'день года', zodiacLabel:'ваш знак зодиака',
+      famousEyebrow:'Известные люди, рождённые в ваш день',
+      shareTitle:'Поделитесь своим близнецом по дню рождения!', shareCopy:'📋 Скопировать ссылку', shareCopied:'✅ Скопировано!',
+      messagesEyebrow:'Публичная доска сообщений', messagesTitle:'Напишите сообщение для всех, кто ищет ту же дату',
+      composerNameLabel:'Отображаемое имя', composerDateLabel:'Дата сообщения', composerTextLabel:'Публичное сообщение',
+      saveMessageBtn:'Опубликовать сообщение', messageListIntro:'Сообщения ниже относятся к искомой дате рождения.',
+      examplesEyebrow:'Прекрасные примеры', examplesTitle:'Способы использования Twinzie',
+      ex1Title:'Пример 1', ex1Text:'Пользователь ищет свою дату рождения и пишет милое сообщение.',
+      ex2Title:'Пример 2', ex2Text:'Кто-то исследует совпадения из разных городов.',
+      ex3Title:'Пример 3', ex3Text:'Посетитель переключается между несколькими языками.',
+      aboutEyebrow:'О нас', aboutTitle:'О Twinzie',
+      aboutText1:'Twinzie — лёгкая социальная концепция для поиска людей с той же датой рождения.',
+      aboutText2:'Сообщения хранятся в Supabase.',
+      aboutText3:'Дизайн многоязычный и современный.',
+      faqEyebrow:'FAQ', faqTitle:'Часто задаваемые вопросы',
+      faqQ1:'Результаты реальные?', faqA1:'Совпадающие люди — демонстрационные данные.',
+      faqQ2:'Сообщения приватны?', faqA2:'Нет, они публичны.',
+      faqQ3:'Отправляются уведомления?', faqA3:'Нет.',
+      faqQ4:'Можно использовать несколько языков?', faqA4:'Да, поддерживается более 50 языков.',
+      faqQ5:'Сайт готов к рекламе?', faqA5:'Основные разделы контента есть.',
+      faqQ6:'Как рассчитывается расстояние?', faqA6:'Расстояние приблизительное.',
+      termsEyebrow:'Условия', termsTitle:'Условия использования',
+      termsText1:'Вы соглашаетесь не публиковать вредный контент.',
+      termsText2:'Это фронтенд-демо.', termsText3:'Будущая версия может включать модерацию.',
+      privacyEyebrow:'Конфиденциальность', privacyTitle:'Политика конфиденциальности',
+      privacyText1:'Сообщения хранятся в Supabase.', privacyText2:'Будущая версия уточнит управление данными.',
+      privacyText3:'Не публикуйте конфиденциальные данные.',
+      contactEyebrow:'Контакты', contactTitle:'Свяжитесь с нами',
+      contactText1:'Контакт: admin@example.com', contactText2:'Реклама: ads@example.com', contactText3:'Поддержка: twinziesupport@gmail.com',
+      navAbout:'О нас', navFaq:'FAQ', navTerms:'Условия', navPrivacy:'Конфиденциальность', navContact:'Контакты',
+      footerText:'© 2026 Twinzie — полная демонстрация.',
+      adsenseNote:'Страница включает сильный дизайн и многоязычный контент.',
+      personDistance:'Примерно {km} км от вас', personMessages:'{count} сообщений на эту дату',
+      publishedAt:'Опубликовано', noMessagesYet:'Пока нет сообщений для этой даты.',
+      saveSuccess:'Ваше сообщение опубликовано.', saveError:'Пожалуйста, заполните все поля.',
+      searchError:'Пожалуйста, заполните имя, дату рождения и местоположение.',
+      publicMessagesCount:'Количество сообщений: {count}', autoGeneratedPerson:'Совпадающий человек',
+      placeholderName:'Пример: Алексей', placeholderLocation:'Пример: Москва, Россия',
+      placeholderMessageName:'Ваше имя или псевдоним',
+      placeholderMessageText:'Напишите доброе сообщение для всех, рождённых в эту дату...',
+      cooldownMsg:'Подождите {sec} секунд.', spamMsg:'Сообщение содержит недопустимый контент.',
+      loadingMessages:'Загрузка сообщений…', tooLongMsg:'Сообщение слишком длинное. Максимум {max} символов.',
+    };
+
+    // ── Chinese ─────────────────────────────────────────────
+    I18N.zh = {
+      brandSub:'神奇的生日连接', contrastBtn:'高对比度',
+      heroEyebrow:'找到你的生日孪生', heroTitle:'发现与你生日相同的人',
+      heroDesc:'输入你的姓名、出生日期和所在地。',
+      utcLabel:'您的本地时间', nameLabel:'姓名', birthDateLabel:'出生日期',
+      locationLabel:'国家或城市', timezoneLabel:'时区',
+      detectTzBtn:'自动检测', timezoneHelp:'从浏览器自动填充，你可以编辑。',
+      privacyMini:'消息公开并存储在 Supabase 中。',
+      searchBtn:'找到我的孪生',
+      heroQuote:'一个美好的想法：世界某处，也许有人与你分享同一个日期。',
+      stat1Label:'网站上的公开消息', stat2Label:'活跃的出生日期',
+      resultsEyebrow:'搜索结果', resultsTitle:'与你分享出生日期的人',
+      metaDateLabel:'你搜索的日期', metaLocationLabel:'你的位置', metaCountLabel:'匹配数量',
+      searchSummaryOne:'找到 1 人与你分享出生日期',
+      searchSummaryMany:'找到 {count} 人与你分享出生日期',
+      noMatches:'未找到该日期的人，但你可以为那天发布公开消息。',
+      rarityLabel:'的人与你同天生日', dayOfYearLabel:'年中第几天', zodiacLabel:'你的星座',
+      famousEyebrow:'与你同天出生的名人',
+      shareTitle:'分享你的生日孪生！', shareCopy:'📋 复制链接', shareCopied:'✅ 已复制！',
+      messagesEyebrow:'公开留言板', messagesTitle:'为所有搜索相同日期的人写一条消息',
+      composerNameLabel:'显示名称', composerDateLabel:'消息日期', composerTextLabel:'公开消息',
+      saveMessageBtn:'发布消息', messageListIntro:'下方消息属于你搜索的出生日期。',
+      examplesEyebrow:'美好示例', examplesTitle:'人们使用 Twinzie 的方式',
+      ex1Title:'示例 1', ex1Text:'用户搜索自己的出生日期，为所有分享那天的人写了温馨消息。',
+      ex2Title:'示例 2', ex2Text:'有人探索来自不同城市的匹配。',
+      ex3Title:'示例 3', ex3Text:'访客在多种语言之间切换。',
+      aboutEyebrow:'关于', aboutTitle:'关于 Twinzie',
+      aboutText1:'Twinzie 是一个寻找相同生日朋友的轻量级社交概念。',
+      aboutText2:'消息存储在 Supabase 中。',
+      aboutText3:'设计多语言、现代化，随时可以扩展。',
+      faqEyebrow:'常见问题', faqTitle:'常见问题',
+      faqQ1:'结果是真实的吗？', faqA1:'匹配的人员是演示数据。',
+      faqQ2:'消息是私密的吗？', faqA2:'不，消息在网站内公开。',
+      faqQ3:'会发送通知吗？', faqA3:'不。',
+      faqQ4:'可以使用多种语言吗？', faqA4:'是的，支持 50 多种语言。',
+      faqQ5:'网站为广告做好准备了吗？', faqA5:'包含核心内容部分。',
+      faqQ6:'距离如何计算？', faqA6:'距离是近似值。',
+      termsEyebrow:'条款', termsTitle:'条款和条件',
+      termsText1:'使用 Twinzie，即表示你同意不发布有害内容。',
+      termsText2:'此版本是前端演示。', termsText3:'未来版本可能包括审核功能。',
+      privacyEyebrow:'隐私', privacyTitle:'隐私政策',
+      privacyText1:'消息存储在 Supabase 中。', privacyText2:'未来版本将明确数据管理方式。',
+      privacyText3:'请避免发布敏感个人信息。',
+      contactEyebrow:'联系', contactTitle:'联系我们',
+      contactText1:'行政联系：admin@example.com', contactText2:'广告：ads@example.com', contactText3:'支持：twinziesupport@gmail.com',
+      navAbout:'关于', navFaq:'常见问题', navTerms:'条款', navPrivacy:'隐私', navContact:'联系',
+      footerText:'© 2026 Twinzie — 完整单文件演示。',
+      adsenseNote:'此页面包括强大的视觉设计和多语言内容。',
+      personDistance:'距你约 {km} 公里', personMessages:'此日期有 {count} 条消息',
+      publishedAt:'发布时间', noMessagesYet:'此日期目前还没有消息。',
+      saveSuccess:'你的消息已发布。', saveError:'请填写所有字段。',
+      searchError:'请填写你的姓名、出生日期和位置。',
+      publicMessagesCount:'消息数量：{count}', autoGeneratedPerson:'匹配人员',
+      placeholderName:'示例：张三', placeholderLocation:'示例：上海，中国',
+      placeholderMessageName:'你的姓名或昵称',
+      placeholderMessageText:'为这个日期出生的所有人写一条温馨的消息...',
+      cooldownMsg:'请等待 {sec} 秒。', spamMsg:'消息包含不允许的内容。',
+      loadingMessages:'正在加载消息…', tooLongMsg:'消息太长，最多 {max} 个字符。',
+    };
+
+    // ── Japanese ────────────────────────────────────────────
+    I18N.ja = {
+      brandSub:'魔法の誕生日コネクション', contrastBtn:'ハイコントラスト',
+      heroEyebrow:'誕生日ツインを見つけよう', heroTitle:'あなたと同じ誕生日を共有する人を発見しよう',
+      heroDesc:'名前、誕生日、場所を入力してください。',
+      utcLabel:'あなたの現地時間', nameLabel:'名前', birthDateLabel:'誕生日',
+      locationLabel:'国または都市', timezoneLabel:'タイムゾーン',
+      detectTzBtn:'自動検出', timezoneHelp:'ブラウザから自動入力されます。',
+      privacyMini:'メッセージは公開され、Supabaseに保存されます。',
+      searchBtn:'ツインを見つける',
+      heroQuote:'素敵なアイデア：世界のどこかで、あなたと同じ日を共有する人がいるかも。',
+      stat1Label:'サイト上の公開メッセージ', stat2Label:'アクティブな誕生日',
+      resultsEyebrow:'検索結果', resultsTitle:'あなたの誕生日を共有する人',
+      metaDateLabel:'検索した日付', metaLocationLabel:'あなたの場所', metaCountLabel:'一致数',
+      searchSummaryOne:'あなたの誕生日を共有する1人が見つかりました',
+      searchSummaryMany:'あなたの誕生日を共有する{count}人が見つかりました',
+      noMatches:'この日付の人が見つかりませんでしたが、メッセージを投稿できます。',
+      rarityLabel:'の人がお誕生日を共有しています', dayOfYearLabel:'年の何日目', zodiacLabel:'あなたの星座',
+      famousEyebrow:'あなたと同じ日に生まれた有名人',
+      shareTitle:'誕生日ツインをシェアしよう！', shareCopy:'📋 リンクをコピー', shareCopied:'✅ コピーしました！',
+      messagesEyebrow:'公開メッセージボード', messagesTitle:'同じ日付を検索する全員にメッセージを書こう',
+      composerNameLabel:'表示名', composerDateLabel:'メッセージ日付', composerTextLabel:'公開メッセージ',
+      saveMessageBtn:'メッセージを公開', messageListIntro:'以下のメッセージは検索した誕生日に属しています。',
+      examplesEyebrow:'素敵な例', examplesTitle:'Twinzieの使い方',
+      ex1Title:'例1', ex1Text:'ユーザーが誕生日を検索し、温かいメッセージを書きます。',
+      ex2Title:'例2', ex2Text:'誰かが異なる都市の一致を探ります。',
+      ex3Title:'例3', ex3Text:'訪問者が複数の言語を切り替えます。',
+      aboutEyebrow:'について', aboutTitle:'Twinzieについて',
+      aboutText1:'Twinzieは同じ誕生日の人を見つけるための軽量なソーシャルコンセプトです。',
+      aboutText2:'メッセージはSupabaseに保存されます。',
+      aboutText3:'デザインは多言語対応で現代的です。',
+      faqEyebrow:'よくある質問', faqTitle:'よくある質問',
+      faqQ1:'結果は本物ですか？', faqA1:'一致する人物はデモデータです。',
+      faqQ2:'メッセージはプライベートですか？', faqA2:'いいえ、公開されています。',
+      faqQ3:'通知は送られますか？', faqA3:'いいえ。',
+      faqQ4:'複数の言語を使用できますか？', faqA4:'はい、50以上の言語をサポートしています。',
+      faqQ5:'広告の準備はできていますか？', faqA5:'主要なコンテンツセクションが含まれています。',
+      faqQ6:'距離はどのように計算されますか？', faqA6:'距離は近似値です。',
+      termsEyebrow:'利用規約', termsTitle:'利用規約',
+      termsText1:'Twinzieを使用することで、有害なコンテンツを投稿しないことに同意します。',
+      termsText2:'この版はフロントエンドデモです。', termsText3:'将来のバージョンはモデレーションを含む可能性があります。',
+      privacyEyebrow:'プライバシー', privacyTitle:'プライバシーポリシー',
+      privacyText1:'メッセージはSupabaseに保存されます。', privacyText2:'将来のバージョンはデータ管理を明確にします。',
+      privacyText3:'機密の個人情報を投稿しないでください。',
+      contactEyebrow:'お問い合わせ', contactTitle:'お問い合わせ',
+      contactText1:'管理: admin@example.com', contactText2:'広告: ads@example.com', contactText3:'サポート: twinziesupport@gmail.com',
+      navAbout:'について', navFaq:'よくある質問', navTerms:'利用規約', navPrivacy:'プライバシー', navContact:'お問い合わせ',
+      footerText:'© 2026 Twinzie — 完全な単一ファイルデモ。',
+      adsenseNote:'このページは強力なビジュアルデザインと多言語コンテンツを含んでいます。',
+      personDistance:'あなたから約{km}km', personMessages:'この日付に{count}件のメッセージ',
+      publishedAt:'公開日時', noMessagesYet:'この日付にはまだメッセージがありません。',
+      saveSuccess:'メッセージが公開されました。', saveError:'すべてのフィールドを入力してください。',
+      searchError:'名前、誕生日、場所を入力してください。',
+      publicMessagesCount:'メッセージ数：{count}', autoGeneratedPerson:'一致する人',
+      placeholderName:'例：太郎', placeholderLocation:'例：東京、日本',
+      placeholderMessageName:'あなたの名前またはニックネーム',
+      placeholderMessageText:'この日に生まれたすべての人への優しいメッセージを書いてください...',
+      cooldownMsg:'{sec}秒待ってください。', spamMsg:'メッセージに不許可のコンテンツが含まれています。',
+      loadingMessages:'メッセージを読み込んでいます…', tooLongMsg:'メッセージが長すぎます。最大{max}文字。',
+    };
+
+    // ── Korean ──────────────────────────────────────────────
+    I18N.pt = { brandSub:'conexões mágicas de aniversário', contrastBtn:'Alto contraste',
+      heroEyebrow:'Encontre seu gêmeo de aniversário', heroTitle:'Descubra pessoas que compartilham sua data de nascimento exata',
+      heroDesc:'Digite seu nome, data de nascimento e localização.',
+      utcLabel:'Sua hora local', nameLabel:'Nome', birthDateLabel:'Data de nascimento',
+      locationLabel:'País ou cidade', timezoneLabel:'Fuso horário', detectTzBtn:'Detectar automaticamente',
+      timezoneHelp:'Preenchido automaticamente pelo navegador.', privacyMini:'As mensagens são públicas e armazenadas no Supabase.',
+      searchBtn:'Encontrar meu gêmeo',
+      heroQuote:'Uma ideia encantadora: em algum lugar do mundo, alguém pode compartilhar a mesma data que você.',
+      stat1Label:'mensagens públicas no site', stat2Label:'datas de nascimento ativas',
+      resultsEyebrow:'Resultados da pesquisa', resultsTitle:'Pessoas que compartilham sua data de nascimento',
+      metaDateLabel:'Data pesquisada', metaLocationLabel:'Sua localização', metaCountLabel:'Número de correspondências',
+      searchSummaryOne:'Encontramos 1 pessoa que compartilha sua data de nascimento',
+      searchSummaryMany:'Encontramos {count} pessoas que compartilham sua data de nascimento',
+      noMatches:'Ninguém encontrado para esta data, mas você pode publicar uma mensagem.',
+      rarityLabel:'das pessoas compartilham seu aniversário', dayOfYearLabel:'dia do ano', zodiacLabel:'seu signo zodiacal',
+      famousEyebrow:'Famosos nascidos no seu dia',
+      shareTitle:'Compartilhe seu gêmeo de aniversário!', shareCopy:'📋 Copiar link', shareCopied:'✅ Copiado!',
+      messagesEyebrow:'Quadro de mensagens público', messagesTitle:'Escreva uma mensagem para todos que pesquisam a mesma data',
+      composerNameLabel:'Nome exibido', composerDateLabel:'Data da mensagem', composerTextLabel:'Mensagem pública',
+      saveMessageBtn:'Publicar mensagem', messageListIntro:'As mensagens abaixo pertencem à data de nascimento que você pesquisou.',
+      examplesEyebrow:'Exemplos encantadores', examplesTitle:'Formas como as pessoas podem usar o Twinzie',
+      ex1Title:'Exemplo 1', ex1Text:'Um usuário pesquisa sua data de nascimento e escreve uma mensagem carinhosa.',
+      ex2Title:'Exemplo 2', ex2Text:'Alguém explora correspondências de diferentes cidades.',
+      ex3Title:'Exemplo 3', ex3Text:'Um visitante alterna entre vários idiomas.',
+      aboutEyebrow:'Sobre', aboutTitle:'Sobre o Twinzie',
+      aboutText1:'O Twinzie é um conceito social leve para encontrar pessoas com a mesma data de nascimento.',
+      aboutText2:'As mensagens são armazenadas no Supabase.', aboutText3:'O design é multilíngue e moderno.',
+      faqEyebrow:'FAQ', faqTitle:'Perguntas frequentes',
+      faqQ1:'Os resultados são reais?', faqA1:'As pessoas coincidentes são dados de demonstração.',
+      faqQ2:'As mensagens são privadas?', faqA2:'Não, são públicas.', faqQ3:'São enviadas notificações?', faqA3:'Não.',
+      faqQ4:'Posso usar mais de um idioma?', faqA4:'Sim, mais de 50 idiomas.',
+      faqQ5:'O site está pronto para anúncios?', faqA5:'Inclui as seções de conteúdo principais.',
+      faqQ6:'Como a distância é calculada?', faqA6:'A distância é aproximada.',
+      termsEyebrow:'Termos', termsTitle:'Termos e condições',
+      termsText1:'Ao usar o Twinzie, você concorda em não publicar conteúdo prejudicial.',
+      termsText2:'Esta versão é uma demo de front-end.', termsText3:'Uma futura versão pode incluir moderação.',
+      privacyEyebrow:'Privacidade', privacyTitle:'Política de privacidade',
+      privacyText1:'As mensagens são armazenadas no Supabase.', privacyText2:'Uma versão futura definirá a gestão de dados.',
+      privacyText3:'Evite publicar informações pessoais confidenciais.',
+      contactEyebrow:'Contato', contactTitle:'Entre em contato',
+      contactText1:'Contato administrativo: admin@example.com', contactText2:'Anúncios: ads@example.com', contactText3:'Suporte: twinziesupport@gmail.com',
+      navAbout:'Sobre', navFaq:'FAQ', navTerms:'Termos', navPrivacy:'Privacidade', navContact:'Contato',
+      footerText:'© 2026 Twinzie — demo completa de arquivo único.',
+      adsenseNote:'Esta página inclui um design visual forte e conteúdo multilíngue.',
+      personDistance:'Aproximadamente {km} km de você', personMessages:'{count} mensagens nesta data',
+      publishedAt:'Publicado', noMessagesYet:'Ainda não há mensagens para esta data.',
+      saveSuccess:'Sua mensagem foi publicada.', saveError:'Por favor preencha todos os campos.',
+      searchError:'Por favor preencha seu nome, data de nascimento e localização.',
+      publicMessagesCount:'Contagem de mensagens: {count}', autoGeneratedPerson:'Pessoa correspondente',
+      placeholderName:'Exemplo: João', placeholderLocation:'Exemplo: Lisboa, Portugal',
+      placeholderMessageName:'Seu nome ou apelido',
+      placeholderMessageText:'Escreva uma mensagem gentil para todos nascidos nesta data...',
+      cooldownMsg:'Aguarde {sec} segundos.', spamMsg:'A mensagem contém conteúdo não permitido.',
+      loadingMessages:'Carregando mensagens…', tooLongMsg:'Mensagem muito longa. Máximo de {max} caracteres.' };
+    
+
+    // ── Hindi ────────────────────────────────────────────────
+    I18N.hi = {
+      brandSub:'जादुई जन्मदिन के जुड़ाव', contrastBtn:'उच्च कंट्रास्ट',
+      heroEyebrow:'अपना जन्मदिन जुड़वाँ खोजें', heroTitle:'उन लोगों को खोजें जो आपकी जन्म तिथि साझा करते हैं',
+      heroDesc:'अपना नाम, जन्म तिथि और स्थान दर्ज करें। Twinzie आपको उन लोगों को दिखाएगा जो आपका दिन साझा करते हैं।',
+      utcLabel:'आपका स्थानीय समय', nameLabel:'नाम', birthDateLabel:'जन्म तिथि',
+      locationLabel:'देश या शहर', timezoneLabel:'समय क्षेत्र',
+      detectTzBtn:'स्वतः पहचानें', timezoneHelp:'आपके ब्राउज़र से स्वतः भरा जाता है, आप संपादित कर सकते हैं।',
+      privacyMini:'संदेश केवल वेबसाइट के अंदर सार्वजनिक हैं और Supabase में संग्रहीत हैं।',
+      searchBtn:'मेरा जुड़वाँ खोजें',
+      heroQuote:'एक प्यारी सोच: दुनिया में कहीं, कोई आपकी शुरुआत की वही तारीख साझा करता होगा।',
+      stat1Label:'साइट पर सार्वजनिक संदेश', stat2Label:'सक्रिय जन्म तिथियाँ',
+      resultsEyebrow:'खोज परिणाम', resultsTitle:'वे लोग जो आपकी जन्म तिथि साझा करते हैं',
+      metaDateLabel:'जो तारीख आपने खोजी', metaLocationLabel:'आपका स्थान', metaCountLabel:'मिलान की संख्या',
+      searchSummaryOne:'आपकी जन्म तिथि साझा करने वाला 1 व्यक्ति मिला',
+      searchSummaryMany:'आपकी जन्म तिथि साझा करने वाले {count} लोग मिले',
+      noMatches:'इस तारीख के लिए कोई नहीं मिला, लेकिन आप उस दिन के लिए सार्वजनिक संदेश प्रकाशित कर सकते हैं।',
+      rarityLabel:'लोग आपका जन्मदिन साझा करते हैं',
+      dayOfYearLabel:'साल का दिन',
+      zodiacLabel:'आपकी राशि',
+      famousEyebrow:'आपके दिन जन्मे प्रसिद्ध लोग',
+      shareTitle:'अपना जन्मदिन जुड़वाँ साझा करें!',
+      shareCopy:'📋 लिंक कॉपी करें', shareCopied:'✅ कॉपी हो गया!',
+      messagesEyebrow:'सार्वजनिक संदेश बोर्ड', messagesTitle:'उसी तारीख को खोजने वाले सभी के लिए संदेश लिखें',
+      composerNameLabel:'प्रदर्शित नाम', composerDateLabel:'संदेश तारीख', composerTextLabel:'सार्वजनिक संदेश',
+      saveMessageBtn:'संदेश प्रकाशित करें',
+      messageListIntro:'नीचे के संदेश आपकी खोजी हुई जन्म तिथि से संबंधित हैं।',
+      examplesEyebrow:'सुंदर उदाहरण', examplesTitle:'Twinzie का उपयोग करने के तरीके',
+      ex1Title:'उदाहरण 1', ex1Text:'एक उपयोगकर्ता अपनी जन्म तिथि खोजता है, विभिन्न देशों के लोगों को देखता है, और उस दिन साझा करने वाले सभी के लिए एक प्यारा संदेश लिखता है।',
+      ex2Title:'उदाहरण 2', ex2Text:'कोई विभिन्न शहरों से मिलान देखता है और उनके बीच की अनुमानित दूरी स्पष्ट रूप से देखता है।',
+      ex3Title:'उदाहरण 3', ex3Text:'एक आगंतुक कई भाषाओं के बीच स्विच करता है और मुख्य व्यवहार बदले बिना एक सहज अनुभव बनाए रखता है।',
+      aboutEyebrow:'के बारे में', aboutTitle:'Twinzie के बारे में',
+      aboutText1:'Twinzie एक हल्की सामाजिक अवधारणा है जो उन लोगों को खोजने पर आधारित है जो आपकी सटीक जन्म तिथि साझा करते हैं।',
+      aboutText2:'उपयोगकर्ता जन्म तिथि से जुड़ा सार्वजनिक संदेश पोस्ट कर सकते हैं। संदेश Supabase में संग्रहीत होते हैं।',
+      aboutText3:'डिज़ाइन बहुभाषी, आधुनिक और वास्तविक बैकएंड उत्पाद में विकसित होने के लिए तैयार है।',
+      faqEyebrow:'सामान्य प्रश्न', faqTitle:'अक्सर पूछे जाने वाले प्रश्न',
+      faqQ1:'क्या परिणाम 100% वास्तविक हैं?', faqA1:'इस संस्करण में मिलान किए गए लोग केवल प्रस्तुति के लिए डेमो डेटा हैं।',
+      faqQ2:'क्या संदेश निजी हैं?', faqA2:'नहीं। संदेश उसी जन्म तिथि के लिए वेबसाइट के अंदर सार्वजनिक हैं।',
+      faqQ3:'क्या सूचनाएं भेजी जाती हैं?', faqA3:'नहीं। इस डेमो में कोई सूचना नहीं भेजी जाती।',
+      faqQ4:'क्या मैं एक से अधिक भाषा का उपयोग कर सकता हूँ?', faqA4:'हाँ। Twinzie इस एकल-फ़ाइल संस्करण में 10+ भाषाओं का समर्थन करता है।',
+      faqQ5:'क्या साइट विज्ञापनों के लिए तैयार है?', faqA5:'इसमें About, FAQ, Privacy, Terms और Contact जैसे मुख्य सामग्री अनुभाग शामिल हैं।',
+      faqQ6:'दूरी कैसे गणना की जाती है?', faqA6:'दिखाई गई दूरी अनुमानित है और इस संस्करण में डेमो निर्देशांकों पर आधारित है।',
+      termsEyebrow:'शर्तें', termsTitle:'नियम और शर्तें',
+      termsText1:'Twinzie का उपयोग करके, आप अपमानजनक, हानिकारक या गैरकानूनी सामग्री प्रकाशित न करने के लिए सहमत होते हैं।',
+      termsText2:'यह संस्करण अवधारणा और डिज़ाइन प्रस्तुत करने के लिए एक फ्रंट-एंड डेमो है।',
+      termsText3:'एक भविष्य का उत्पादन संस्करण मॉडरेशन, रिपोर्टिंग और बैकएंड सत्यापन शामिल कर सकता है।',
+      privacyEyebrow:'गोपनीयता', privacyTitle:'गोपनीयता नीति',
+      privacyText1:'संदेश Supabase में संग्रहीत होते हैं। आपके स्वेच्छा से दर्ज किए गए डेटा के अलावा कोई व्यक्तिगत डेटा एकत्र नहीं किया जाता।',
+      privacyText2:'एक भविष्य के वास्तविक संस्करण को डेटा के संग्रहण, प्रसंस्करण और प्रतिधारण को स्पष्ट रूप से परिभाषित करना चाहिए।',
+      privacyText3:'कृपया सार्वजनिक संदेशों में संवेदनशील व्यक्तिगत जानकारी पोस्ट करने से बचें।',
+      contactEyebrow:'संपर्क', contactTitle:'हमसे संपर्क करें',
+      contactText1:'प्रशासनिक संपर्क: admin@example.com',
+      contactText2:'विज्ञापन और साझेदारी: ads@example.com',
+      contactText3:'उपयोगकर्ता सहायता: twinziesupport@gmail.com',
+      navAbout:'के बारे में', navFaq:'सामान्य प्रश्न', navTerms:'शर्तें', navPrivacy:'गोपनीयता', navContact:'संपर्क',
+      footerText:'© 2026 Twinzie — पूर्ण एकल-फ़ाइल डेमो।',
+      adsenseNote:'इस पृष्ठ में एक मजबूत दृश्य डिज़ाइन, बहुभाषी सामग्री और मुख्य सूचनात्मक अनुभाग शामिल हैं।',
+      personDistance:'आपसे लगभग {km} किमी दूर',
+      personMessages:'इस तारीख पर {count} संदेश',
+      publishedAt:'प्रकाशित', noMessagesYet:'इस तारीख के लिए अभी तक कोई सार्वजनिक संदेश नहीं है।',
+      saveSuccess:'आपका संदेश प्रकाशित हो गया।', saveError:'कृपया प्रदर्शित नाम, संदेश तारीख और संदेश भरें।',
+      searchError:'कृपया अपना नाम, जन्म तिथि और स्थान भरें।',
+      publicMessagesCount:'संदेश: {count}', autoGeneratedPerson:'मिलान व्यक्ति',
+      placeholderName:'उदाहरण: अर्जुन', placeholderLocation:'उदाहरण: मुंबई, भारत',
+      placeholderMessageName:'आपका नाम या उपनाम',
+      placeholderMessageText:'इस तारीख को जन्मे सभी के लिए एक दयालु संदेश लिखें...',
+      cooldownMsg:'कृपया फिर से पोस्ट करने से पहले {sec} सेकंड प्रतीक्षा करें।',
+      spamMsg:'आपके संदेश में अनुमत सामग्री नहीं है।',
+      loadingMessages:'संदेश लोड हो रहे हैं…',
+      tooLongMsg:'संदेश बहुत लंबा है। अधिकतम {max} अक्षर।',
+    };
+
+    // ── Filipino (Tagalog) ───────────────────────────────────
+    I18N.tl = {
+      brandSub:'mahiwagang koneksyon sa kaarawan', contrastBtn:'Mataas na Kontrasto',
+      heroEyebrow:'Hanapin ang iyong birthday twin', heroTitle:'Tuklasin ang mga taong may parehong petsa ng kapanganakan',
+      heroDesc:'Ilagay ang iyong pangalan, petsa ng kapanganakan, at lokasyon. Ipapakita ng Twinzie ang mga taong may parehong araw, kasama ang mga pampublikong mensahe para sa petsang iyon.',
+      utcLabel:'Iyong lokal na oras', nameLabel:'Pangalan', birthDateLabel:'Petsa ng kapanganakan',
+      locationLabel:'Bansa o lungsod', timezoneLabel:'Time zone',
+      detectTzBtn:'Awtomatikong matukoy', timezoneHelp:'Awtomatikong napupunan mula sa iyong browser, maaari mong baguhin.',
+      privacyMini:'Ang mga mensahe ay pampubliko sa loob ng website at naka-imbak sa Supabase.',
+      searchBtn:'Hanapin ang aking twin',
+      heroQuote:'Isang magandang ideya: sa isang sulok ng mundo, may isang tao na maaaring may parehong simula ng petsa mo.',
+      stat1Label:'mga pampublikong mensahe sa site', stat2Label:'aktibong mga petsa ng kapanganakan',
+      resultsEyebrow:'Mga resulta ng paghahanap', resultsTitle:'Mga taong may parehong petsa ng kapanganakan mo',
+      metaDateLabel:'Petsang hinanap mo', metaLocationLabel:'Ang iyong lokasyon', metaCountLabel:'Bilang ng mga tugma',
+      searchSummaryOne:'Nakahanap ng 1 taong may parehong petsa ng kapanganakan mo',
+      searchSummaryMany:'Nakahanap ng {count} taong may parehong petsa ng kapanganakan mo',
+      noMatches:'Walang nahanap para sa petsang ito, ngunit maaari kang mag-publish ng pampublikong mensahe para sa araw na iyon.',
+      rarityLabel:'ng mga tao ang may parehong kaarawan mo',
+      dayOfYearLabel:'araw ng taon',
+      zodiacLabel:'ang iyong zodiac sign',
+      famousEyebrow:'Mga sikat na tao na ipinanganak sa iyong araw',
+      shareTitle:'I-share ang iyong birthday twin!',
+      shareCopy:'📋 Kopyahin ang link', shareCopied:'✅ Nakopya na!',
+      messagesEyebrow:'Pampublikong message board', messagesTitle:'Magsulat ng mensahe para sa lahat ng naghahanap ng parehong petsa',
+      composerNameLabel:'Pangalang ipapakita', composerDateLabel:'Petsa ng mensahe', composerTextLabel:'Pampublikong mensahe',
+      saveMessageBtn:'I-publish ang mensahe',
+      messageListIntro:'Ang mga mensahe sa ibaba ay para sa petsa ng kapanganakang hinanap mo.',
+      examplesEyebrow:'Magagandang halimbawa', examplesTitle:'Mga paraan kung paano gagamitin ang Twinzie',
+      ex1Title:'Halimbawa 1', ex1Text:'Naghahanap ang isang gumagamit ng kanilang petsa ng kapanganakan, nakakakita ng ilang tao mula sa iba\'t ibang bansa, at sumulat ng isang magandang pampublikong mensahe para sa lahat ng nagbabahagi ng araw na iyon.',
+      ex2Title:'Halimbawa 2', ex2Text:'Tinitingnan ng isang tao ang mga tugma mula sa iba\'t ibang lungsod at malinaw na nakikita ang tinatayang distansya sa pagitan nila.',
+      ex3Title:'Halimbawa 3', ex3Text:'Ang isang bisita ay lumilipat sa iba\'t ibang wika at pinapanatili ang maayos na karanasan nang hindi binabago ang pangunahing gawi.',
+      aboutEyebrow:'Tungkol sa', aboutTitle:'Tungkol sa Twinzie',
+      aboutText1:'Ang Twinzie ay isang magaan na social concept na nakatuon sa paghahanap ng mga taong may parehong eksaktong petsa ng kapanganakan mo.',
+      aboutText2:'Maaaring mag-post ang mga gumagamit ng pampublikong mensahe na nakatali sa petsa ng kapanganakan. Ang mga mensahe ay naka-imbak sa Supabase at lumalabas sa loob ng website lamang.',
+      aboutText3:'Ang disenyo ay multilingual, moderno, at handa nang mag-evolve sa isang tunay na produktong pinapagana ng backend.',
+      faqEyebrow:'FAQ', faqTitle:'Mga madalas na itanong',
+      faqQ1:'Totoo ba ang mga resulta?', faqA1:'Sa bersyong ito, ang mga katugmang tao ay demo/sample na data lamang para sa presentasyon.',
+      faqQ2:'Pribado ba ang mga mensahe?', faqA2:'Hindi. Ang mga mensahe ay pampubliko sa loob ng website para sa parehong petsa ng kapanganakan.',
+      faqQ3:'Nagpapadala ba ng mga abiso?', faqA3:'Hindi. Walang abisong ipinapadala sa demo na ito.',
+      faqQ4:'Maaari ba akong gumamit ng higit sa isang wika?', faqA4:'Oo. Sinusuportahan ng Twinzie ang 10+ wika sa bersyong ito.',
+      faqQ5:'Handa na ba ang site para sa mga ad?', faqA5:'Kasama nito ang mga pangunahing seksyon ng nilalaman tulad ng About, FAQ, Privacy, Terms, at Contact.',
+      faqQ6:'Paano kinakalkula ang distansya?', faqA6:'Ang ipinakitang distansya ay tinatayang batay sa mga demo na coordinate sa bersyong ito.',
+      termsEyebrow:'Mga tuntunin', termsTitle:'Mga tuntunin at kondisyon',
+      termsText1:'Sa paggamit ng Twinzie, sumasang-ayon kang huwag mag-publish ng mapang-abuso, nakakapinsala, o ilegal na nilalaman.',
+      termsText2:'Ang bersyong ito ay isang front-end demo na inilaan upang ipakita ang konsepto at disenyo.',
+      termsText3:'Ang isang hinaharap na bersyon ng produksyon ay maaaring magsama ng moderasyon, pag-uulat, at backend na pagpapatunay.',
+      privacyEyebrow:'Privacy', privacyTitle:'Patakaran sa privacy',
+      privacyText1:'Ang mga mensahe ay naka-imbak sa Supabase. Walang personal na data na nakolekta bukod sa iyong kusang-loob na inilagay.',
+      privacyText2:'Ang isang tunay na bersyon sa hinaharap ay dapat na malinaw na tukuyin kung paano naka-imbak, naproseso, at napanatili ang data.',
+      privacyText3:'Mangyaring iwasang mag-post ng sensitibong personal na impormasyon sa mga pampublikong mensahe.',
+      contactEyebrow:'Makipag-ugnayan', contactTitle:'Makipag-ugnayan sa amin',
+      contactText1:'Administratibong pakikipag-ugnayan: admin@example.com',
+      contactText2:'Mga ad at pakikipagsosyo: ads@example.com',
+      contactText3:'Suporta ng gumagamit: twinziesupport@gmail.com',
+      navAbout:'Tungkol sa', navFaq:'FAQ', navTerms:'Mga tuntunin', navPrivacy:'Privacy', navContact:'Makipag-ugnayan',
+      footerText:'© 2026 Twinzie — kumpletong single-file demo.',
+      adsenseNote:'Ang pahinang ito ay may malakas na visual na disenyo, multilingual na nilalaman, at mga pangunahing seksyon ng impormasyon.',
+      personDistance:'Humigit-kumulang {km} km mula sa iyo',
+      personMessages:'{count} mensahe sa petsang ito',
+      publishedAt:'Na-publish', noMessagesYet:'Wala pang mga pampublikong mensahe para sa petsang ito.',
+      saveSuccess:'Na-publish ang iyong mensahe.', saveError:'Mangyaring punan ang pangalang ipapakita, petsa ng mensahe, at katawan ng mensahe.',
+      searchError:'Mangyaring punan ang iyong pangalan, petsa ng kapanganakan, at lokasyon.',
+      publicMessagesCount:'Mga mensahe: {count}', autoGeneratedPerson:'Katugmang tao',
+      placeholderName:'Halimbawa: Maria', placeholderLocation:'Halimbawa: Maynila, Pilipinas',
+      placeholderMessageName:'Ang iyong pangalan o palayaw',
+      placeholderMessageText:'Sumulat ng magandang mensahe para sa lahat ng ipinanganak sa petsang ito...',
+      cooldownMsg:'Mangyaring maghintay ng {sec} segundo bago mag-post muli.',
+      spamMsg:'Ang iyong mensahe ay naglalaman ng hindi pinapayagang nilalaman.',
+      loadingMessages:'Nilo-load ang mga mensahe…',
+      tooLongMsg:'Masyadong mahaba ang mensahe. Maximum na {max} character.',
+    };
+
+    /* Remaining languages default to English — add full translations as needed */
+
+    /* ════════════════════════════════════════════════════════
+       CONTENT FILTER — Blocks hate speech, slurs, and harmful language
+    ════════════════════════════════════════════════════════ */
+
+    // Curse words & explicit content
+    const PROFANITY = [
+      'fuck','shit','bitch','asshole','bastard','cunt','damn','dick','pussy',
+      'cock','piss','crap','hell','ass','arse','bollocks','wanker','twat',
+      'motherfucker','bullshit','jackass','douchebag','prick','slut','whore',
+      'fag','faggot','dyke','retard','nigga','nigger','spic','kike','chink',
+      'gook','wetback','cracker','honky','spook','coon','jigaboo','raghead',
+      'towelhead','sandnigger','beaner','zipperhead','slope','nip',
+    ];
+
+    // Racist, hateful & discriminatory phrases/words
+    const HATE_SPEECH = [
+      'white power','white supremacy','white supremacist','nazi','heil hitler',
+      'kkk','ku klux','lynch','go back to your country','racial slur',
+      'kill all','death to','genocide','ethnic cleansing','master race',
+      'race traitor','blood and soil','great replacement','14 words',
+      'antisemit','jew lover','islamophob','go back to africa','slavery was good',
+      'inferior race','superior race','subhuman',
+    ];
+
+    // Spam / scam
+    const SPAM = ['spam','scam','casino','porn','xxx','viagra','nft','hack'];
+
+    // All blocked terms combined
+    const ALL_BLOCKED = [...PROFANITY, ...HATE_SPEECH, ...SPAM];
+
+    // URL / link patterns
+    const URL_PATTERNS = [
+      /https?:\/\//i,
+      /www\./i,
+      /\b[\w-]+\.(com|net|org|io|co|info|biz|me|tv|app|dev|xyz|site|online|store|shop|link|click|ly|gl|bit)\b/i,
+      /\b\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}\b/,
+      /discord\.gg/i,
+      /t\.me\//i,
+      /wa\.me\//i,
+    ];
+
+    // Spam repetition patterns
+    const SPAM_PATTERNS = [
+      /(.)(\1){4,}/,
+      /[!?]{4,}/,
+      /[\$€£¥]{3,}/,
+      /[A-Z]{8,}/,
+      /(\b\w+\b)(\s+\1){3,}/i,
+    ];
+
+    /**
+     * validateMessage(text, name?) → { ok: boolean, reason: string }
+     * Returns true if message is clean, false if blocked.
+     */
+    function validateMessage(text, name) {
+      name = name || '';
+      var combined = (name + ' ' + text).toLowerCase().trim();
+      var raw = text.trim();
+
+      // Check 1: URLs / links
+      for (var i = 0; i < URL_PATTERNS.length; i++) {
+        if (URL_PATTERNS[i].test(raw)) {
+          return { ok: false, reason: 'Links and URLs are not allowed in messages.' };
+        }
+      }
+
+      // Check 2: Inappropriate words (whole-word match only)
+      for (var j = 0; j < ALL_BLOCKED.length; j++) {
+        var word = ALL_BLOCKED[j].toLowerCase();
+        // Use word boundary so "hello" doesn't match "hell"
+        var wordRegex = new RegExp('(?<![\\w\u0600-\u06ff])' + word.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + '(?![\\w\u0600-\u06ff])', 'i');
+        if (wordRegex.test(combined)) {
+          return { ok: false, reason: 'Your message contains inappropriate content.' };
+        }
+      }
+
+      // Check 3: Spam patterns
+      for (var k = 0; k < SPAM_PATTERNS.length; k++) {
+        if (SPAM_PATTERNS[k].test(raw)) {
+          return { ok: false, reason: 'Your message looks like spam. Please write normally.' };
+        }
+      }
+
+      return { ok: true, reason: '' };
+    }
+
+    function containsBadWords(text) {
+      const lower = text.toLowerCase();
+      return ALL_BLOCKED.some(w => lower.includes(w));
+    }
+
+    /**
+     * Replaces blocked words in text with asterisks (e.g. "f***")
+     * Used for display sanitisation as a second layer of defence.
+     */
+    function censorText(text) {
+      let result = text;
+      ALL_BLOCKED.forEach(word => {
+        const regex = new RegExp(word.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'gi');
+        result = result.replace(regex, m => m[0] + '*'.repeat(Math.max(m.length - 1, 2)));
+      });
+      return result;
+    }
+
+    /* ════════════════════════════════════════════════════════
+       FAMOUS PEOPLE DATABASE (sample — expand as needed)
+    ════════════════════════════════════════════════════════ */
+    const FAMOUS_PEOPLE = [
+      { date:'04-12', name:'David Letterman', field:'🎬 TV Host' },
+      { date:'04-12', name:'Claire Danes', field:'🎭 Actress' },
+      { date:'08-03', name:'Martha Stewart', field:'👩‍🍳 Lifestyle' },
+      { date:'08-03', name:'Tom Brady', field:'🏈 Athlete' },
+      { date:'11-21', name:'Björk', field:'🎵 Musician' },
+      { date:'11-21', name:'René Magritte', field:'🎨 Artist' },
+      { date:'02-14', name:'Michael Bloomberg', field:'💼 Businessman' },
+      { date:'02-14', name:'Simon Pegg', field:'🎬 Actor' },
+      { date:'01-01', name:'J. Edgar Hoover', field:'🕵️ Director' },
+      { date:'12-25', name:'Humphrey Bogart', field:'🎬 Actor' },
+      { date:'12-25', name:'Jimmy Buffett', field:'🎵 Musician' },
+      { date:'06-15', name:'Courteney Cox', field:'🎭 Actress' },
+      { date:'07-04', name:'Calvin Coolidge', field:'🏛️ President' },
+      { date:'03-14', name:'Albert Einstein', field:'🔬 Physicist' },
+      { date:'06-01', name:'Marilyn Monroe', field:'🎬 Actress' },
+      { date:'10-09', name:'John Lennon', field:'🎵 Musician' },
+      { date:'05-05', name:'Adele', field:'🎵 Musician' },
+      { date:'08-04', name:'Barack Obama', field:'🏛️ President' },
+    ];
+
+    function getFamousPeople(birthDate) {
+      const mmdd = birthDate.slice(5); // "MM-DD"
+      return FAMOUS_PEOPLE.filter(p => p.date === mmdd).slice(0, 3);
+    }
+
+    /* ════════════════════════════════════════════════════════
+       ZODIAC SIGNS
+    ════════════════════════════════════════════════════════ */
+    function getZodiac(dateStr) {
+      const d = new Date(dateStr + 'T00:00:00');
+      const m = d.getMonth() + 1, day = d.getDate();
+      if ((m===1&&day>=20)||(m===2&&day<=18)) return '♒ Aquarius';
+      if ((m===2&&day>=19)||(m===3&&day<=20)) return '♓ Pisces';
+      if ((m===3&&day>=21)||(m===4&&day<=19)) return '♈ Aries';
+      if ((m===4&&day>=20)||(m===5&&day<=20)) return '♉ Taurus';
+      if ((m===5&&day>=21)||(m===6&&day<=20)) return '♊ Gemini';
+      if ((m===6&&day>=21)||(m===7&&day<=22)) return '♋ Cancer';
+      if ((m===7&&day>=23)||(m===8&&day<=22)) return '♌ Leo';
+      if ((m===8&&day>=23)||(m===9&&day<=22)) return '♍ Virgo';
+      if ((m===9&&day>=23)||(m===10&&day<=22)) return '♎ Libra';
+      if ((m===10&&day>=23)||(m===11&&day<=21)) return '♏ Scorpio';
+      if ((m===11&&day>=22)||(m===12&&day<=21)) return '♐ Sagittarius';
+      return '♑ Capricorn';
+    }
+
+    function getDayOfYear(dateStr) {
+      const d = new Date(dateStr + 'T00:00:00');
+      const start = new Date(d.getFullYear(), 0, 0);
+      return Math.floor((d - start) / 86400000);
+    }
+
+    /* ════════════════════════════════════════════════════════
+       APP STATE
+    ════════════════════════════════════════════════════════ */
+    const STORAGE_APP_KEY = 'twinzie_app_v4';
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    let state = (() => {
+      try { return JSON.parse(localStorage.getItem(STORAGE_APP_KEY)) || {}; }
+      catch { return {}; }
+    })();
+    state.lang        = state.lang        || 'en';
+    state.highContrast= state.highContrast|| false;
+    state.lastSearch  = state.lastSearch  || null;
+
+    function saveState() {
+      localStorage.setItem(STORAGE_APP_KEY, JSON.stringify(state));
+    }
+
+    /* ════════════════════════════════════════════════════════
+       I18N ENGINE
+    ════════════════════════════════════════════════════════ */
+
+    /** Get translation dict for current language, fallback to English */
+    function dict() {
+      return I18N[state.lang] || I18N.en;
+    }
+
+    /** Get a single translation string, fallback chain: lang → en → key */
+    function t(key) {
+      return dict()[key] ?? I18N.en[key] ?? key;
+    }
+
+    /** Replace {var} placeholders in a string */
+    function tr(key, vars = {}) {
+      return String(t(key)).replace(/\{(\w+)\}/g, (_, k) => vars[k] ?? '');
+    }
+
+    /** Get locale code for Intl formatting */
+    function locale() {
+      const entry = LANGUAGES.find(l => l[0] === state.lang);
+      return entry ? entry[3] : 'en';
+    }
+
+    /** Is current language RTL? */
+    function isRTL() {
+      const entry = LANGUAGES.find(l => l[0] === state.lang);
+      return entry ? entry[2] === 'rtl' : false;
+    }
+
+    /**
+     * Apply current language to the entire page.
+     * Uses data-i18n attributes on elements for zero-coupling.
+     */
+    function applyLanguage() {
+      const dir = isRTL() ? 'rtl' : 'ltr';
+
+      // Update html/body direction and lang
+      document.documentElement.lang = state.lang;
+      document.documentElement.dir  = dir;
+      document.body.dir = dir;
+
+      // Sync the dropdown selection
+      const sel = document.getElementById('langSelect');
+      if (sel) sel.value = state.lang;
+
+      // Update all elements with data-i18n attribute
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        const text = t(key);
+        if (text) el.textContent = text;
+      });
+
+      buildCountrySelect();
+
+      // Update input placeholders
+      const els = getEls();
+      if (els.userName)      els.userName.placeholder      = t('placeholderName');
+      if (els.cityInput)     els.cityInput.placeholder     = t('placeholderCity');
+      if (els.messageName)   els.messageName.placeholder   = t('placeholderMessageName');
+      if (els.messageText)   els.messageText.placeholder   = t('placeholderMessageText');
+      if (els.timezoneInput) els.timezoneInput.placeholder = 'Asia/Jerusalem';
+
+      // Re-render dynamic content if a search was already performed
+      if (state.lastSearch) restoreSearchUI();
+
+      updateStats();
+    }
+
+    /* ════════════════════════════════════════════════════════
+       SUPABASE CLIENT (lightweight fetch wrapper)
+    ════════════════════════════════════════════════════════ */
+
+    /**
+     * Fetch messages for a given birth date from Supabase.
+     * Only called when a user submits the search form — not on page load.
+     * Results are cached client-side for CACHE_TTL_MS milliseconds.
+     */
+    const _msgCache = new Map();
+    const _localMessages = new Map();
+    const REPORTS_TABLE = 'message_reports';
+    const REPORTED_MESSAGES_KEY = 'twinzie_reported_messages';
+    let reportTargetMessage = null;
+    const SITE_LAUNCH_DATE = new Date('2026-01-01T00:00:00Z');
+    const COUNTRIES = ['Argentina','Australia','Austria','Brazil','Cameroon','Canada','China','Egypt','France','Germany','Greece','India','Italy','Japan','Jordan','Mexico','Morocco','Nigeria','Philippines','Portugal','Saudi Arabia','South Africa','South Korea','Spain','Türkiye','United Arab Emirates','United Kingdom','United States'];
+    const COUNTRY_LANGUAGE_HINTS = {
+      'Argentina':['es','es','en'], 'Australia':['en','en'], 'Austria':['de','de','en'], 'Brazil':['pt','pt','en'], 'Cameroon':['fr','fr','en'], 'Canada':['en','fr','en'], 'China':['zh','zh','en'], 'Egypt':['ar','ar','en'], 'France':['fr','fr','en'], 'Germany':['de','de','en'], 'Greece':['en','en'], 'India':['hi','hi','en'], 'Italy':['en','en'], 'Japan':['ja','ja','en'], 'Jordan':['ar','ar','en'], 'Mexico':['es','es','en'], 'Morocco':['ar','fr','ar'], 'Nigeria':['en','en'], 'Philippines':['fil','fil','en'], 'Portugal':['pt','pt','en'], 'Saudi Arabia':['ar','ar','en'], 'South Africa':['en','en'], 'South Korea':['en','en'], 'Spain':['es','es','en'], 'Türkiye':['en','en'], 'United Arab Emirates':['ar','ar','en'], 'United Kingdom':['en','en'], 'United States':['en','en']
+    };
+    const DEMO_MESSAGE_NAMES = {
+      en:['Ava','Noah','Liam','Maya','Zoe','Layla','Ethan','Nora'],
+      es:['Sofía','Mateo','Valeria','Lucas','Camila','Diego'],
+      fr:['Lina','Enzo','Manon','Adam','Inès','Yanis'],
+      ar:['ليان','آدم','سارة','عمر','تالا','يزن'],
+      pt:['Lia','Theo','Helena','Miguel','Yara','Caio'],
+      de:['Mila','Elias','Leni','Jonas','Emilia','Finn'],
+      hi:['आरव','अनाया','विवान','कियारा','अद्विक','सिया'],
+      fil:['Mika','Andrei','Lea','Paolo','Nica','Gab'],
+      ja:['Yui','Ren','Hina','Sota','Aoi','Haru'],
+      zh:['小雨','子晨','安然','宇轩','可欣','浩然']
+    };
+    const DEMO_MESSAGE_TEXTS = {
+      en:['did not expect this many people with my date ngl','always weirdly nice seeing this date pop up here','just checking my birthday twins again lol','this date has good energy honestly','leaving a little hi for anyone with this birthday','ok why are there actually so many of us'],
+      es:['no pensé encontrar tanta gente con mi fecha jajaj','solo vine a mirar y me quedé un rato','si naciste este día ya me caes bien','esta fecha tiene buena vibra la verdad','dejando un saludo para mis date twins'],
+      fr:["je reviens voir cette date de temps en temps","trop drôle de voir autant de monde ici","si t'as cette date aussi t'es validé","petit coucou à ceux qui partagent ce jour"],
+      ar:['رجعت أتفقد هالتاريخ مرة ثانية','في حدا غيري يحب يشوف هالتاريخ هون؟','بس حبيت أترك سلام لأصحاب نفس اليوم','صراحة لطيف أشوف ناس يشاركوني هالتاريخ'],
+      pt:['entrei só por curiosidade e fiquei','esse dia junta gente boa viu','deixando um oi pra quem nasceu nessa data','volto aqui às vezes só pra ver essa data'],
+      de:['musste nochmal nach diesem datum schauen','irgendwie hat dieses datum echt vibe','lass mal liebe für dieses datum hier','schon wild wie viele dieselbe daten haben'],
+      hi:['बस ऐसे ही अपनी date फिर देख ली','इस तारीख वाले लोग सच में अच्छे लगते हैं','थोड़ा सा प्यार इस date के लोगों के लिए','फिर से देखने आया कि कौन कौन है यहाँ'],
+      fil:['napadaan lang ako pero ang cute ng date na to','hello sa mga kapareho ko ng birthday','ang saya pala makita tong date dito ulit','balik ako dito minsan para silipin tong date'],
+      ja:['この日付ついまた見に来ちゃった','同じ日ってやっぱりちょっと嬉しい','この日生まれの人にそっと挨拶だけ','この日付なんか好きなんだよね'],
+      zh:['又回来看看这个生日日期了','没想到这个日期的人还不少','给同一天生日的人留个小小问候','这个日期真的越看越顺眼']
+    };
+
+    function isSupabaseConfigured() {
+      return SUPABASE_URL && SUPABASE_ANON
+        && !SUPABASE_URL.includes('YOUR_PROJECT')
+        && !SUPABASE_ANON.includes('YOUR_ANON');
+    }
+
+    async function fetchMessagesForDate(date) {
+      if (!isSupabaseConfigured()) {
+        return (_localMessages.get(date) || []).slice().reverse();
+      }
+      const cached = _msgCache.get(date);
+      if (cached && (Date.now() - cached.ts) < CACHE_TTL_MS) return cached.data;
+      const url = `${SUPABASE_URL}/rest/v1/${MESSAGES_TABLE}`
+        + `?birth_date=eq.${encodeURIComponent(date)}`
+        + `&order=created_at.desc`
+        + `&limit=${MAX_MESSAGES_PER_DATE}`;
+      try {
+        const res = await fetch(url, {
+          headers: { 'apikey': SUPABASE_ANON, 'Authorization': `Bearer ${SUPABASE_ANON}` }
+        });
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        const data = await res.json();
+        _msgCache.set(date, { ts: Date.now(), data });
+        return data;
+      } catch (err) {
+        console.warn('[Twinzie] Supabase fetch failed:', err);
+        return (_localMessages.get(date) || []).slice().reverse();
+      }
+    }
+
+    async function insertMessage(payload) {
+      if (!isSupabaseConfigured()) {
+        const list = _localMessages.get(payload.birth_date) || [];
+        list.push(payload);
+        _localMessages.set(payload.birth_date, list);
+        _msgCache.delete(payload.birth_date);
+        return;
+      }
+      const url = `${SUPABASE_URL}/rest/v1/${MESSAGES_TABLE}`;
+      const res = await fetch(url, {
+        method: 'POST',
+        headers: {
+          'apikey': SUPABASE_ANON,
+          'Authorization': `Bearer ${SUPABASE_ANON}`,
+          'Content-Type': 'application/json',
+          'Prefer': 'return=minimal',
+        },
+        body: JSON.stringify(payload),
+      });
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      _msgCache.delete(payload.birth_date);
+    }
+
+    function getMessageReportKey(msg) {
+      return String(msg.id || `${msg.birth_date || msg.birthdate || ''}|${msg.name || msg.author || ''}|${msg.created_at || msg.time || ''}|${msg.text || msg.message || ''}`);
+    }
+
+    function getReportedMessageMap() {
+      try { return JSON.parse(localStorage.getItem(REPORTED_MESSAGES_KEY) || '{}') || {}; }
+      catch { return {}; }
+    }
+
+    function hasReportedMessage(msg) {
+      const map = getReportedMessageMap();
+      return !!map[getMessageReportKey(msg)];
+    }
+
+    function markMessageReported(msg) {
+      const map = getReportedMessageMap();
+      map[getMessageReportKey(msg)] = Date.now();
+      localStorage.setItem(REPORTED_MESSAGES_KEY, JSON.stringify(map));
+    }
+
+    async function insertMessageReport(payload) {
+      const localKey = 'twinzie_local_reports';
+      if (!isSupabaseConfigured()) {
+        const list = JSON.parse(localStorage.getItem(localKey) || '[]');
+        list.push(payload);
+        localStorage.setItem(localKey, JSON.stringify(list));
+        return;
+      }
+      try {
+        const url = `${SUPABASE_URL}/rest/v1/${REPORTS_TABLE}`;
+        const res = await fetch(url, {
+          method: 'POST',
+          headers: {
+            'apikey': SUPABASE_ANON,
+            'Authorization': `Bearer ${SUPABASE_ANON}`,
+            'Content-Type': 'application/json',
+            'Prefer': 'return=minimal'
+          },
+          body: JSON.stringify(payload)
+        });
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      } catch (err) {
+        console.warn('[Twinzie] Report save failed, storing locally instead:', err);
+        const list = JSON.parse(localStorage.getItem(localKey) || '[]');
+        list.push(payload);
+        localStorage.setItem(localKey, JSON.stringify(list));
+      }
+    }
+
+    function closeReportModal() {
+      const els = getEls();
+      reportTargetMessage = null;
+      els.reportModalBackdrop.classList.add('hidden');
+      els.reportModalBackdrop.setAttribute('aria-hidden', 'true');
+      els.reportDetails.value = '';
+      els.reportReason.value = 'spam';
+      els.reportSubmitBtn.disabled = false;
+    }
+
+    function openReportModal(msg) {
+      const els = getEls();
+      reportTargetMessage = msg;
+      els.reportMessagePreview.textContent = `${msg.name || msg.author || 'Unknown'} — ${msg.text || msg.message || ''}`;
+      els.reportModalBackdrop.classList.remove('hidden');
+      els.reportModalBackdrop.setAttribute('aria-hidden', 'false');
+    }
+
+    async function submitMessageReport() {
+      const els = getEls();
+      if (!reportTargetMessage) return;
+      if (hasReportedMessage(reportTargetMessage)) {
+        showToast('You already reported this message.');
+        closeReportModal();
+        return;
+      }
+      els.reportSubmitBtn.disabled = true;
+      const payload = {
+        message_id: String(reportTargetMessage.id || ''),
+        source_message_id: String(reportTargetMessage.id || ''),
+        birth_date: reportTargetMessage.birth_date || reportTargetMessage.birthdate || '',
+        message_author: reportTargetMessage.name || reportTargetMessage.author || '',
+        message_text: reportTargetMessage.text || reportTargetMessage.message || '',
+        message_created_at: reportTargetMessage.created_at || reportTargetMessage.time || new Date().toISOString(),
+        reason: els.reportReason.value,
+        details: els.reportDetails.value.trim(),
+        is_demo_message: !!reportTargetMessage.is_demo,
+        reported_at: new Date().toISOString(),
+        support_email: 'twinziesupport@gmail.com'
+      };
+      await insertMessageReport(payload);
+      markMessageReported(reportTargetMessage);
+      showToast('Report submitted. For urgent moderation issues: twinziesupport@gmail.com');
+      closeReportModal();
+      if (state.lastSearch && state.lastSearch.birthDate) renderMessages(state.lastSearch.birthDate);
+    }
+
+    /* ════════════════════════════════════════════════════════
+       PROFILES — Save & Fetch real users from Supabase
+    ════════════════════════════════════════════════════════ */
+
+    /**
+     * Save a user profile to Supabase when they search.
+     * Upserts by (name + birth_date + location) to avoid duplicates
+     * if the same person searches multiple times.
+     */
+    async function saveProfile(name, birthDate, location, timezone) {
+      if (!isSupabaseConfigured()) return;
+      try {
+        const url = SUPABASE_URL + '/rest/v1/' + PROFILES_TABLE;
+        await fetch(url, {
+          method: 'POST',
+          headers: {
+            'apikey': SUPABASE_ANON,
+            'Authorization': 'Bearer ' + SUPABASE_ANON,
+            'Content-Type': 'application/json',
+            'Prefer': 'resolution=ignore-duplicates',
+          },
+          body: JSON.stringify({
+            name: name,
+            birth_date: birthDate,
+            location: location,
+            timezone: timezone || '',
+          }),
+        });
+      } catch (err) {
+        console.warn('[Twinzie] Profile save failed:', err);
+      }
+    }
+
+    /**
+     * Fetch all real profiles for a given birth date from Supabase.
+     * Returns array of { name, birth_date, location } objects.
+     */
+    const _profileCache = new Map();
+
+    async function fetchProfilesForDate(date) {
+      if (!isSupabaseConfigured()) return [];
+      const cached = _profileCache.get(date);
+      if (cached && (Date.now() - cached.ts) < CACHE_TTL_MS) return cached.data;
+      try {
+        const url = SUPABASE_URL + '/rest/v1/' + PROFILES_TABLE
+          + '?birth_date=eq.' + encodeURIComponent(date)
+          + '&order=created_at.asc'
+          + '&limit=50';
+        const res = await fetch(url, {
+          headers: { 'apikey': SUPABASE_ANON, 'Authorization': 'Bearer ' + SUPABASE_ANON }
+        });
+        if (!res.ok) throw new Error('HTTP ' + res.status);
+        const data = await res.json();
+        _profileCache.set(date, { ts: Date.now(), data });
+        return data;
+      } catch (err) {
+        console.warn('[Twinzie] Profiles fetch failed:', err);
+        return [];
+      }
+    }
+
+    /* ════════════════════════════════════════════════════════
+       DEMO DATASET (shown when no Supabase match exists)
+    ════════════════════════════════════════════════════════ */
+    const DEMO_DATASET = [
+      { name:'Lina',  birthDate:'1998-04-12', location:'Amman, Jordan',        lat:31.9454,  lon:35.9284  },
+      { name:'Mateo', birthDate:'1998-04-12', location:'São Paulo, Brazil',     lat:-23.5505, lon:-46.6333 },
+      { name:'Yuki',  birthDate:'1998-04-12', location:'Kyoto, Japan',          lat:35.0116,  lon:135.7681 },
+      { name:'Salma', birthDate:'2001-08-03', location:'Casablanca, Morocco',   lat:33.5731,  lon:-7.5898  },
+      { name:'Omar',  birthDate:'2001-08-03', location:'Istanbul, Türkiye',     lat:41.0082,  lon:28.9784  },
+      { name:'Noah',  birthDate:'2001-08-03', location:'Vancouver, Canada',     lat:49.2827,  lon:-123.1207},
+      { name:'Hana',  birthDate:'1995-11-21', location:'Seoul, South Korea',    lat:37.5665,  lon:126.9780 },
+      { name:'Adam',  birthDate:'1995-11-21', location:'Athens, Greece',        lat:37.9838,  lon:23.7275  },
+      { name:'Leila', birthDate:'1995-11-21', location:'Nairobi, Kenya',        lat:-1.2921,  lon:36.8219  },
+      { name:'Maya',  birthDate:'1992-02-14', location:'Melbourne, Australia',  lat:-37.8136, lon:144.9631 },
+      { name:'Karim', birthDate:'1992-02-14', location:'Marrakesh, Morocco',    lat:31.6295,  lon:-7.9811  },
+      { name:'Elena', birthDate:'1992-02-14', location:'Lima, Peru',            lat:-12.0464, lon:-77.0428 },
+    ];
+
+    /* ════════════════════════════════════════════════════════
+       UTILITY FUNCTIONS
+    ════════════════════════════════════════════════════════ */
+
+    function escapeHtml(str) {
+      return String(str)
+        .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
+        .replace(/"/g,'&quot;').replace(/'/g,'&#039;');
+    }
+
+    function formatDate(ds) {
+      const d = new Date(ds + 'T00:00:00');
+      if (isNaN(d)) return ds;
+      return new Intl.DateTimeFormat(locale(), { year:'numeric', month:'long', day:'numeric' }).format(d);
+    }
+
+    function formatDateTime(iso) {
+      return new Intl.DateTimeFormat(locale(), {
+        year:'numeric', month:'short', day:'numeric', hour:'2-digit', minute:'2-digit'
+      }).format(new Date(iso));
+    }
+
+    function distanceKm(lat1,lon1,lat2,lon2) {
+      const R=6371, r=d=>d*Math.PI/180;
+      const a = Math.sin(r(lat2-lat1)/2)**2 + Math.cos(r(lat1))*Math.cos(r(lat2))*Math.sin(r(lon2-lon1)/2)**2;
+      return Math.round(R*2*Math.atan2(Math.sqrt(a),Math.sqrt(1-a)));
+    }
+
+    function hash(str) {
+      let h=2166136261;
+      for (let i=0;i<str.length;i++){h^=str.charCodeAt(i);h=Math.imul(h,16777619)}
+      return h>>>0;
+    }
+    function mulberry32(seed){ return ()=>{ let t=seed+=0x6D2B79F5; t=Math.imul(t^(t>>>15),t|1); t^=t+Math.imul(t^(t>>>7),t|61); return((t^(t>>>14))>>>0)/4294967296; }; }
+
+    function pseudoCoord(text) {
+      const r=mulberry32(hash(text.toLowerCase().trim()));
+      return {lat:(r()*140)-70, lon:(r()*360)-180};
+    }
+
+    function showToast(msg, type='success') {
+      const el = document.getElementById('toast');
+      el.textContent = msg; el.className = `toast ${type}`;
+      el.classList.remove('hidden');
+      clearTimeout(showToast._t);
+      showToast._t = setTimeout(()=>el.classList.add('hidden'), 2800);
+    }
+
+    function cryptoId() {
+      if (crypto?.getRandomValues) {
+        const a=new Uint32Array(2); crypto.getRandomValues(a);
+        return a[0].toString(16)+a[1].toString(16);
+      }
+      return Date.now().toString(16)+Math.random().toString(16).slice(2);
+    }
+
+    function buildCountrySelect() {
+      const sel = document.getElementById('countrySelect');
+      if (!sel) return;
+      const current = sel.value;
+      sel.innerHTML = `<option value="">${escapeHtml(t('countryLabel'))}</option>` + COUNTRIES.map(country => `<option value="${country}">${country}</option>`).join('');
+      if (current && COUNTRIES.includes(current)) sel.value = current;
+    }
+
+    function buildLocation(country, city) {
+      const cleanCountry = (country || '').trim();
+      const cleanCity = (city || '').trim();
+      return cleanCity ? `${cleanCity}, ${cleanCountry}` : cleanCountry;
+    }
+
+    function splitLocation(location) {
+      const value = String(location || '').trim();
+      if (!value) return { country:'', city:'' };
+      const parts = value.split(',').map(s => s.trim()).filter(Boolean);
+      if (parts.length <= 1) return { country:value, city:'' };
+      return { country:parts[parts.length - 1], city:parts.slice(0, -1).join(', ') };
+    }
+
+    function getBirthdaySharePct(date) {
+      const [year, month, day] = String(date).split('-').map(Number);
+      if (month === 2 && day === 29) return '0.07%';
+      const seed = hash(`birthday-pct|${String(month).padStart(2,'0')}-${String(day).padStart(2,'0')}`);
+      const rand = mulberry32(seed)();
+      const value = 0.22 + rand * 0.12;
+      return `${value.toFixed(2)}%`;
+    }
+
+    function pickDemoLanguage(country, rand) {
+      const pool = COUNTRY_LANGUAGE_HINTS[country] || ['fr','es','ar','pt','de','fil','hi','ja','zh','en'];
+      return pool[Math.floor(rand() * pool.length)] || 'en';
+    }
+
+    function pickFrom(list, rand) {
+      return list[Math.floor(rand() * list.length)];
+    }
+
+    function generateMessagesForDate(date, count = 12, country = '') {
+      const total = Math.max(8, Math.min(14, count));
+      const rand = mulberry32(hash(`demo-msg|${date}|${country}`));
+      const now = Date.now();
+      const start = SITE_LAUNCH_DATE.getTime();
+      const messages = [];
+      for (let i = 0; i < total; i += 1) {
+        const lang = pickDemoLanguage(country, rand);
+        const names = DEMO_MESSAGE_NAMES[lang] || DEMO_MESSAGE_NAMES.en;
+        const texts = DEMO_MESSAGE_TEXTS[lang] || DEMO_MESSAGE_TEXTS.en;
+        const name = pickFrom(names, rand);
+        const message = pickFrom(texts, rand);
+        const createdAt = new Date(start + Math.floor(rand() * Math.max(1, now - start))).toISOString();
+        messages.push({
+          id:`demo-${date}-${lang}-${i}`,
+          name,
+          author:name,
+          birth_date:date,
+          birthdate:date,
+          text:message,
+          message,
+          created_at:createdAt,
+          time:createdAt,
+          is_demo:true
+        });
+      }
+      return messages.sort((a,b) => new Date(b.created_at) - new Date(a.created_at));
+    }
+
+    function smoothScrollTo(targetY, duration = 750) {
+      const startY = window.scrollY || window.pageYOffset;
+      const diff = targetY - startY;
+      const start = performance.now();
+      const ease = t => 1 - Math.pow(1 - t, 3);
+      function frame(now) {
+        const progress = Math.min(1, (now - start) / duration);
+        window.scrollTo(0, startY + diff * ease(progress));
+        if (progress < 1) requestAnimationFrame(frame);
+      }
+      requestAnimationFrame(frame);
+    }
+
+    /* ════════════════════════════════════════════════════════
+       ELEMENT CACHE — call once after DOM ready
+    ════════════════════════════════════════════════════════ */
+    let _els = null;
+    function getEls() {
+      if (_els) return _els;
+      _els = {
+        langSelect:       document.getElementById('langSelect'),
+        contrastBtn:      document.getElementById('contrastBtn'),
+        utcClock:         document.getElementById('utcClock'),
+        searchForm:       document.getElementById('searchForm'),
+        userName:         document.getElementById('userName'),
+        birthDate:        document.getElementById('birthDate'),
+        countrySelect:    document.getElementById('countrySelect'),
+        cityInput:        document.getElementById('cityInput'),
+        timezoneInput:    document.getElementById('timezoneInput'),
+        detectTzBtn:      document.getElementById('detectTzBtn'),
+        resultsSection:   document.getElementById('resultsSection'),
+        searchedDateText: document.getElementById('searchedDateText'),
+        yourLocationText: document.getElementById('yourLocationText'),
+        matchCountText:   document.getElementById('matchCountText'),
+        searchSummaryPill:document.getElementById('searchSummaryPill'),
+        candidatesList:   document.getElementById('candidatesList'),
+        rarityPct:        document.getElementById('rarityPct'),
+        dayOfYear:        document.getElementById('dayOfYear'),
+        zodiacSign:       document.getElementById('zodiacSign'),
+        famousPeopleWrap: document.getElementById('famousPeopleWrap'),
+        famousList:       document.getElementById('famousList'),
+        shareSection:     document.getElementById('shareSection'),
+        shareTwitter:     document.getElementById('shareTwitter'),
+        shareWhatsApp:    document.getElementById('shareWhatsApp'),
+        shareCopy:        document.getElementById('shareCopy'),
+        messagesSection:  document.getElementById('messagesSection'),
+        messageName:      document.getElementById('messageName'),
+        messageDate:      document.getElementById('messageDate'),
+        messageText:      document.getElementById('messageText'),
+        saveMessageBtn:   document.getElementById('saveMessageBtn'),
+        messagesList:     document.getElementById('messagesList'),
+        messageCountPill: document.getElementById('messageCountPill'),
+        charCount:        document.getElementById('charCount'),
+        cooldownBarWrap:  document.getElementById('cooldownBarWrap'),
+        cooldownBar:      document.getElementById('cooldownBar'),
+        cooldownLabel:    document.getElementById('cooldownLabel'),
+        reportModalBackdrop: document.getElementById('reportModalBackdrop'),
+        reportMessagePreview: document.getElementById('reportMessagePreview'),
+        reportReason:     document.getElementById('reportReason'),
+        reportDetails:    document.getElementById('reportDetails'),
+        reportCancelBtn:  document.getElementById('reportCancelBtn'),
+        reportSubmitBtn:  document.getElementById('reportSubmitBtn'),
+        backToTopBtn:     document.getElementById('backToTopBtn'),
+        globe:            document.getElementById('globe'),
+        stat1Num:         document.getElementById('stat1Num'),
+        stat2Num:         document.getElementById('stat2Num'),
+      };
+      return _els;
+    }
+
+    /* ════════════════════════════════════════════════════════
+       CLOCK
+    ════════════════════════════════════════════════════════ */
+    function tickUTC() {
+      const d = new Date();
+      const pad = n => String(n).padStart(2, '0');
+      const els = getEls();
+      const tzInput = els.timezoneInput ? els.timezoneInput.value.trim() : '';
+      const tz = tzInput || Intl.DateTimeFormat().resolvedOptions().timeZone || 'UTC';
+
+      try {
+        // Format time in the user's chosen timezone
+        const parts = new Intl.DateTimeFormat('en-GB', {
+          hour: '2-digit', minute: '2-digit', second: '2-digit',
+          hour12: false, timeZone: tz
+        }).formatToParts(d);
+
+        const get = type => parts.find(p => p.type === type)?.value ?? '00';
+        els.utcClock.textContent = `${get('hour')}:${get('minute')}:${get('second')}`;
+
+        // Show the resolved timezone name nicely (e.g. "Europe/Rome")
+        const zoneLabel = document.getElementById('clockZoneLabel');
+        if (zoneLabel) {
+          // Try to get a short offset label like GMT+1
+          const offsetStr = new Intl.DateTimeFormat('en', {
+            timeZoneName: 'shortOffset', timeZone: tz
+          }).formatToParts(d).find(p => p.type === 'timeZoneName')?.value || tz;
+          // Show "Europe/Rome · GMT+1"
+          zoneLabel.textContent = tz === offsetStr ? tz : `${tz.replace(/_/g,' ')} · ${offsetStr}`;
+        }
+      } catch {
+        // Fallback if timezone string is invalid — show local browser time
+        els.utcClock.textContent = `${pad(d.getHours())}:${pad(d.getMinutes())}:${pad(d.getSeconds())}`;
+        const zoneLabel = document.getElementById('clockZoneLabel');
+        if (zoneLabel) zoneLabel.textContent = 'Local time';
+      }
+    }
+
+    /* ════════════════════════════════════════════════════════
+       STATS (Supabase row count — optional, skip if no DB)
+    ════════════════════════════════════════════════════════ */
+    async function updateStats() {
+      try {
+        // Use local messages if Supabase not configured
+        if (!isSupabaseConfigured()) {
+          let total = 0;
+          const dates = new Set();
+          _localMessages.forEach((msgs, date) => { total += msgs.length; dates.add(date); });
+          const els = getEls();
+          els.stat1Num.textContent = total.toLocaleString(locale());
+          els.stat2Num.textContent = dates.size.toLocaleString(locale());
+          return;
+        }
+        const res = await fetch(
+          `${SUPABASE_URL}/rest/v1/${MESSAGES_TABLE}?select=birth_date`,
+          { headers:{'apikey':SUPABASE_ANON,'Authorization':`Bearer ${SUPABASE_ANON}`} }
+        );
+        if (!res.ok) return;
+        const rows = await res.json();
+        const els = getEls();
+        els.stat1Num.textContent = rows.length.toLocaleString(locale());
+        els.stat2Num.textContent = new Set(rows.map(r=>r.birth_date)).size.toLocaleString(locale());
+      } catch { /* stats are decorative — fail silently */ }
+    }
+
+    /* ════════════════════════════════════════════════════════
+       SEARCH LOGIC
+    ════════════════════════════════════════════════════════ */
+    function generatePeople(date, userLocation, userCoord) {
+      const matching = DEMO_DATASET.filter(p => p.birthDate === date);
+      const list = matching.length > 0 ? matching : (() => {
+        const rand = mulberry32(hash(date+'|'+userLocation));
+        const cities = [
+          ['Amman, Jordan',31.9454,35.9284],['Istanbul, Türkiye',41.0082,28.9784],
+          ['Casablanca, Morocco',33.5731,-7.5898],['Athens, Greece',37.9838,23.7275],
+          ['Seoul, South Korea',37.5665,126.9780],['São Paulo, Brazil',-23.5505,-46.6333],
+          ['Kyoto, Japan',35.0116,135.7681],['Nairobi, Kenya',-1.2921,36.8219],
+          ['Melbourne, Australia',-37.8136,144.9631],
+        ];
+        const count = 2 + Math.floor(rand() * 3);
+        return Array.from({length:count}, (_,i) => {
+          const city = cities[Math.floor(rand()*cities.length)];
+          return { name:`${t('autoGeneratedPerson')} ${i+1}`, birthDate:date, location:city[0], lat:city[1], lon:city[2] };
+        });
+      })();
+      return list.map(p => ({ ...p, distance:distanceKm(userCoord.lat,userCoord.lon,p.lat,p.lon) }));
+    }
+
+    function renderCandidates(people) {
+      const el = getEls().candidatesList;
+      el.innerHTML = '';
+      if (!people.length) { el.innerHTML=`<div class="empty">${escapeHtml(t('noMatches'))}</div>`; return; }
+      [...people].sort((a,b)=>a.distance-b.distance).forEach(p => {
+        const card = document.createElement('article');
+        card.className = 'person-card';
+        card.innerHTML = `
+          <div class="person-top">
+            <div>
+              <h4 class="person-name">${escapeHtml(p.name)}</h4>
+              <div class="person-location">${escapeHtml(p.location)}</div>
+            </div>
+            <span class="pill">${escapeHtml(formatDate(p.birthDate))}</span>
+          </div>
+          <div class="person-distance">${escapeHtml(tr('personDistance',{km:p.distance.toLocaleString(locale())}))}</div>`;
+        el.appendChild(card);
+      });
+    }
+
+    function renderFunStats(date) {
+      const els = getEls();
+      els.rarityPct.textContent  = getBirthdaySharePct(date);
+      els.dayOfYear.textContent  = getDayOfYear(date).toLocaleString(locale());
+      els.zodiacSign.textContent = getZodiac(date);
+    }
+
+    function renderFamousPeople(date) {
+      const els = getEls();
+      const famous = getFamousPeople(date);
+      if (!famous.length) { els.famousPeopleWrap.classList.add('hidden'); return; }
+      els.famousPeopleWrap.classList.remove('hidden');
+      els.famousList.innerHTML = famous.map(f => `
+        <div class="famous-card glass">
+          <span class="famous-emoji">${escapeHtml(f.field.slice(0,2))}</span>
+          <div>
+            <div class="famous-name">${escapeHtml(f.name)}</div>
+            <div class="famous-detail">${escapeHtml(f.field)}</div>
+          </div>
+        </div>`).join('');
+    }
+
+    function setupShare(name, date) {
+      const els = getEls();
+      const url  = window.location.href;
+      const text = `I found my birthday twin on Twinzie! I was born on ${date}. 🎂 Check it out: ${url}`;
+
+      els.shareTwitter.onclick = () => window.open(
+        `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}`, '_blank');
+      els.shareWhatsApp.onclick = () => window.open(
+        `https://wa.me/?text=${encodeURIComponent(text)}`, '_blank');
+      els.shareCopy.onclick = async () => {
+        try {
+          await navigator.clipboard.writeText(url);
+          const orig = els.shareCopy.textContent;
+          els.shareCopy.textContent = t('shareCopied');
+          setTimeout(()=>{ els.shareCopy.textContent = t('shareCopy'); }, 2000);
+        } catch { showToast('Copy failed', 'error'); }
+      };
+    }
+
+    async function performSearch(e) {
+      e.preventDefault();
+      const els = getEls();
+      const name     = els.userName.value.trim();
+      const birthDate= els.birthDate.value.trim();
+      const country  = els.countrySelect.value.trim();
+      const city     = els.cityInput.value.trim();
+      const location = buildLocation(country, city);
+      const timezone = els.timezoneInput.value.trim();
+
+      if (!name || !birthDate || !country) { showToast(t('searchError'),'error'); return; }
+
+      const userCoord = pseudoCoord(location);
+
+      // ── Save this user's profile to Supabase automatically ──
+      await saveProfile(name, birthDate, location, timezone);
+
+      // ── Fetch real profiles from Supabase for this date ──
+      const realProfiles = await fetchProfilesForDate(birthDate);
+
+      // Build people list: real profiles from DB, fallback to demo if empty
+      let people;
+      if (realProfiles.length > 0) {
+        // Map DB profiles to people format, exclude the current user themselves
+        const others = realProfiles.filter(p =>
+          !(p.name.toLowerCase() === name.toLowerCase() &&
+            p.location.toLowerCase() === location.toLowerCase())
+        );
+        people = others.map(p => {
+          const coord = pseudoCoord(p.location);
+          return {
+            name: p.name,
+            birthDate: p.birth_date,
+            location: p.location,
+            lat: coord.lat,
+            lon: coord.lon,
+            distance: distanceKm(userCoord.lat, userCoord.lon, coord.lat, coord.lon),
+            isReal: true,
+          };
+        });
+      } else {
+        // No real profiles yet — fall back to demo data
+        people = generatePeople(birthDate, location, userCoord);
+      }
+
+      // Save to state
+      state.lastSearch = { name, birthDate, location, timezone, userCoord, people };
+      saveState();
+
+      // Render results
+      els.searchedDateText.textContent = formatDate(birthDate);
+      els.yourLocationText.textContent = location;
+      els.matchCountText.textContent   = people.length.toLocaleString(locale());
+      els.searchSummaryPill.textContent= people.length===1
+        ? t('searchSummaryOne')
+        : tr('searchSummaryMany',{count:people.length.toLocaleString(locale())});
+
+      renderCandidates(people);
+      renderFunStats(birthDate);
+      renderFamousPeople(birthDate);
+      setupShare(name, birthDate);
+
+      // Pre-fill message board
+      els.messageDate.value = birthDate;
+      els.messageName.value = name;
+
+      // Show sections
+      els.resultsSection.classList.remove('hidden');
+      els.messagesSection.classList.remove('hidden');
+      drawGlobe(userCoord, people);
+
+      // Fetch messages from Supabase
+      await renderMessages(birthDate);
+
+      els.resultsSection.scrollIntoView({
+        behavior: prefersReducedMotion ? 'auto' : 'smooth', block:'start'
+      });
+    }
+
+    /* ════════════════════════════════════════════════════════
+       MESSAGE RENDERING
+    ════════════════════════════════════════════════════════ */
+    async function renderMessages(date) {
+      const els = getEls();
+      const wrap = els.messagesList;
+
+      // Show spinner while loading
+      wrap.innerHTML = `<div class="loading-msgs"><div class="spinner"></div>${escapeHtml(t('loadingMessages'))}</div>`;
+
+      const dbMessages = await fetchMessagesForDate(date);
+      const selectedCountry = getEls().countrySelect ? getEls().countrySelect.value.trim() : splitLocation(state.lastSearch?.location || '').country;
+      const demoMessages = generateMessagesForDate(date, 12, selectedCountry);
+      const list = [...dbMessages, ...demoMessages].sort((a,b) => new Date(b.created_at || b.time || 0) - new Date(a.created_at || a.time || 0));
+
+      els.messageCountPill.textContent = tr('publicMessagesCount',{count:list.length.toLocaleString(locale())});
+      wrap.innerHTML = '';
+
+      if (!list.length) {
+        wrap.innerHTML = `<div class="empty">${escapeHtml(t('noMessagesYet'))}</div>`;
+        return;
+      }
+
+      list.forEach(msg => {
+        const item = document.createElement('article');
+        item.className = 'message-item';
+        const reportedAlready = hasReportedMessage(msg);
+        item.innerHTML = `
+          <div class="message-head">
+            <div class="message-author">${escapeHtml(msg.name || msg.author || '—')}</div>
+            <div class="message-meta">${escapeHtml(t('publishedAt'))}: ${escapeHtml(formatDateTime(msg.created_at || msg.time))}</div>
+          </div>
+          <div class="message-body">${escapeHtml(msg.text || msg.message || '')}</div>
+          <div class="message-actions">
+            <button type="button" class="report-btn" ${reportedAlready ? 'disabled' : ''}>${reportedAlready ? 'Reported' : 'Report'}</button>
+          </div>`;
+        const reportBtn = item.querySelector('.report-btn');
+        if (reportBtn && !reportedAlready) reportBtn.addEventListener('click', () => openReportModal(msg));
+        wrap.appendChild(item);
+      });
+    }
+
+    /* ════════════════════════════════════════════════════════
+       SPAM PROTECTION + POST MESSAGE
+    ════════════════════════════════════════════════════════ */
+    const COOLDOWN_KEY = 'twinzie_last_post';
+    let cooldownTimer = null;
+
+    function getRemainingCooldown() {
+      const last = parseInt(localStorage.getItem(COOLDOWN_KEY) || '0', 10);
+      return Math.max(0, COOLDOWN_MS - (Date.now() - last));
+    }
+
+    function startCooldownUI() {
+      const els = getEls();
+      els.saveMessageBtn.disabled = true;
+      els.cooldownBarWrap.style.display = 'block';
+      els.cooldownLabel.style.display   = 'block';
+
+      function tick() {
+        const rem = getRemainingCooldown();
+        if (rem <= 0) {
+          els.saveMessageBtn.disabled = false;
+          els.cooldownBarWrap.style.display = 'none';
+          els.cooldownLabel.style.display   = 'none';
+          els.cooldownBar.style.width = '100%';
+          return;
+        }
+        const pct = (rem / COOLDOWN_MS) * 100;
+        els.cooldownBar.style.width = pct + '%';
+        els.cooldownLabel.textContent = tr('cooldownMsg',{sec:Math.ceil(rem/1000)});
+        cooldownTimer = setTimeout(tick, 500);
+      }
+      tick();
+    }
+
+    async function savePublicMessage() {
+      const els = getEls();
+      const name  = els.messageName.value.trim();
+      const date  = els.messageDate.value.trim();
+      const text  = els.messageText.value.trim();
+
+      // Validation
+      if (!name || !date || !text) { showToast(t('saveError'),'error'); return; }
+      if (text.length > MAX_MSG_LENGTH) { showToast(tr('tooLongMsg',{max:MAX_MSG_LENGTH}),'error'); return; }
+      var validation = validateMessage(text, name);
+      if (!validation.ok) { showToast(validation.reason, 'error'); return; }
+
+      // Cooldown check
+      const remaining = getRemainingCooldown();
+      if (remaining > 0) {
+        showToast(tr('cooldownMsg',{sec:Math.ceil(remaining/1000)}),'error');
+        startCooldownUI();
+        return;
+      }
+
+      // Disable button during request
+      els.saveMessageBtn.disabled = true;
+
+      try {
+        await insertMessage({
+          name:       name,
+          birth_date: date,
+          text:       text,
+        });
+
+        // Record cooldown
+        localStorage.setItem(COOLDOWN_KEY, String(Date.now()));
+        startCooldownUI();
+
+        els.messageText.value = '';
+        updateCharCount();
+        showToast(t('saveSuccess'));
+        await renderMessages(date);
+        await updateStats();
+      } catch (err) {
+        console.error('[Twinzie] Insert failed:', err);
+        showToast('Failed to publish. Please try again.','error');
+        els.saveMessageBtn.disabled = false;
+      }
+    }
+
+    function updateCharCount() {
+      const els = getEls();
+      const len = els.messageText.value.length;
+      els.charCount.textContent = `${len} / ${MAX_MSG_LENGTH}`;
+      els.charCount.style.color = len > MAX_MSG_LENGTH * 0.9 ? 'var(--danger)' : '';
+    }
+
+    /* ════════════════════════════════════════════════════════
+       RESTORE SEARCH UI (on language change / page reload)
+    ════════════════════════════════════════════════════════ */
+    function restoreSearchUI() {
+      if (!state.lastSearch) return;
+      const { name, birthDate, location, timezone, userCoord, people } = state.lastSearch;
+      const els = getEls();
+
+      const parts = splitLocation(location);
+      els.userName.value       = name || '';
+      els.birthDate.value      = birthDate || '';
+      if (els.countrySelect) els.countrySelect.value = parts.country || '';
+      if (els.cityInput) els.cityInput.value = parts.city || '';
+      els.timezoneInput.value  = timezone || '';
+      els.messageName.value    = name || '';
+      els.messageDate.value    = birthDate || '';
+
+      els.searchedDateText.textContent = formatDate(birthDate);
+      els.yourLocationText.textContent = location;
+      els.matchCountText.textContent   = people.length.toLocaleString(locale());
+      els.searchSummaryPill.textContent= people.length===1
+        ? t('searchSummaryOne')
+        : tr('searchSummaryMany',{count:people.length.toLocaleString(locale())});
+
+      renderCandidates(people);
+      renderFunStats(birthDate);
+      renderFamousPeople(birthDate);
+      setupShare(name, birthDate);
+      drawGlobe(userCoord, people);
+
+      els.resultsSection.classList.remove('hidden');
+      els.messagesSection.classList.remove('hidden');
+
+      // NOTE: We do NOT re-fetch messages on language change to save DB calls.
+      // Messages are only fetched on user search.
+    }
+
+    /* ════════════════════════════════════════════════════════
+       GLOBE CANVAS
+    ════════════════════════════════════════════════════════ */
+    function drawGlobe(userCoord, people) {
+      const canvas = getEls().globe;
+      const ctx = canvas.getContext('2d');
+      if (!ctx) return;
+
+      const w=canvas.width, h=canvas.height, cx=w/2, cy=h/2, r=Math.min(w,h)*.34;
+      ctx.clearRect(0,0,w,h);
+
+      const g = ctx.createRadialGradient(cx-r*.3,cy-r*.35,r*.2,cx,cy,r);
+      g.addColorStop(0,'rgba(100,160,255,.26)'); g.addColorStop(1,'rgba(55,90,170,.05)');
+      ctx.fillStyle=g; ctx.beginPath(); ctx.arc(cx,cy,r,0,Math.PI*2); ctx.fill();
+
+      ctx.strokeStyle='rgba(255,255,255,.12)'; ctx.lineWidth=1;
+      for(let i=1;i<=4;i++){ctx.beginPath();ctx.arc(cx,cy,r*(i/4),0,Math.PI*2);ctx.stroke()}
+      for(let i=-2;i<=2;i++){
+        ctx.beginPath();
+        const ry=r*Math.cos((i/2.5)*Math.PI/2);
+        ctx.ellipse(cx,cy,r,Math.max(6,Math.abs(ry)),0,0,Math.PI*2);
+        ctx.strokeStyle='rgba(255,255,255,.08)'; ctx.stroke();
+      }
+
+      const proj=(lat,lon)=>({x:cx+(lon/180)*r*.92, y:cy-(lat/90)*r*.92});
+      const pulse=(x,y,c,s)=>{
+        ctx.save(); ctx.shadowBlur=26; ctx.shadowColor=c; ctx.fillStyle=c;
+        ctx.beginPath(); ctx.arc(x,y,s,0,Math.PI*2); ctx.fill();
+        ctx.globalAlpha=.2; ctx.beginPath(); ctx.arc(x,y,s*2.5,0,Math.PI*2); ctx.fill();
+        ctx.restore();
+      };
+
+      const you = proj(userCoord.lat, userCoord.lon);
+      pulse(you.x, you.y, '#ffd76a', 7);
+      ctx.fillStyle='rgba(255,255,255,.85)'; ctx.font='bold 17px sans-serif';
+      ctx.fillText(isRTL() ? 'أنت' : 'You', you.x+14, you.y-12);
+
+      people.slice(0,5).forEach((p,i) => {
+        const pt = proj(p.lat, p.lon);
+        ctx.strokeStyle='rgba(255,255,255,.22)'; ctx.lineWidth=2; ctx.setLineDash([7,8]);
+        ctx.beginPath(); ctx.moveTo(you.x,you.y);
+        ctx.quadraticCurveTo(cx,cy-r*(.95+i*.03),pt.x,pt.y); ctx.stroke();
+        ctx.setLineDash([]);
+        pulse(pt.x, pt.y, i%2?'#f3a6d0':'#8db7ff', 5);
+      });
+    }
+
+    /* ════════════════════════════════════════════════════════
+       STAR BACKGROUND
+    ════════════════════════════════════════════════════════ */
+    function initStars() {
+      const canvas = document.getElementById('stars');
+      const ctx = canvas.getContext('2d');
+      if (!ctx) return;
+      let w,h,dpr=Math.min(devicePixelRatio||1,2);
+      const stars=[];
+
+      function resize(){
+        w=innerWidth; h=innerHeight;
+        canvas.width=Math.floor(w*dpr); canvas.height=Math.floor(h*dpr);
+        canvas.style.width=w+'px'; canvas.style.height=h+'px';
+        ctx.setTransform(dpr,0,0,dpr,0,0);
+        stars.length=0;
+        const n=Math.min(220,Math.floor(w*h/9000));
+        for(let i=0;i<n;i++) stars.push({x:Math.random()*w,y:Math.random()*h,r:Math.random()*1.8+.2,a:Math.random()*.8+.2,s:Math.random()*.012+.003});
+      }
+
+      function frame(){
+        ctx.clearRect(0,0,w,h);
+        for(const s of stars){
+          s.a+=s.s*(Math.random()>.5?1:-1);
+          if(s.a<.15)s.a=.15; if(s.a>1)s.a=1;
+          ctx.beginPath(); ctx.fillStyle=`rgba(255,255,255,${s.a})`;
+          ctx.arc(s.x,s.y,s.r,0,Math.PI*2); ctx.fill();
+        }
+        if(!prefersReducedMotion) requestAnimationFrame(frame);
+      }
+
+      resize(); frame();
+      window.addEventListener('resize',()=>{
+        resize();
+        if(state.lastSearch) drawGlobe(state.lastSearch.userCoord, state.lastSearch.people);
+      });
+    }
+
+    /* ════════════════════════════════════════════════════════
+       LANGUAGE SELECTOR SETUP
+    ════════════════════════════════════════════════════════ */
+    function buildLangSelector() {
+      const sel = document.getElementById('langSelect');
+      sel.innerHTML = LANGUAGES.map(([code,,, ], i) => {
+        const native = LANGUAGES[i][1];
+        return `<option value="${code}">${native}</option>`;
+      }).join('');
+      sel.value = state.lang;
+    }
+
+    /* ════════════════════════════════════════════════════════
+       EVENT BINDING
+    ════════════════════════════════════════════════════════ */
+    function bindEvents() {
+      const els = getEls();
+
+      // Auto-detect timezone
+      els.detectTzBtn.addEventListener('click', () => {
+        try {
+          els.timezoneInput.value = Intl.DateTimeFormat().resolvedOptions().timeZone || '';
+          tickUTC(); // immediately update the clock display
+        }
+        catch {}
+      });
+
+      // Live clock update as user types timezone
+      els.timezoneInput.addEventListener('input', () => tickUTC());
+      els.timezoneInput.addEventListener('change', () => tickUTC());
+
+      // Search form submit
+      els.searchForm.addEventListener('submit', performSearch);
+
+      // Publish message
+      els.saveMessageBtn.addEventListener('click', savePublicMessage);
+
+      // Char counter
+      els.messageText.addEventListener('input', updateCharCount);
+
+      // Report modal
+      els.reportCancelBtn.addEventListener('click', closeReportModal);
+      els.reportSubmitBtn.addEventListener('click', submitMessageReport);
+      els.reportModalBackdrop.addEventListener('click', (e) => {
+        if (e.target === els.reportModalBackdrop) closeReportModal();
+      });
+
+      // Language change — THE critical part
+      // On each change: update state, save to localStorage, re-apply entire UI
+      els.langSelect.addEventListener('change', () => {
+        state.lang = els.langSelect.value;
+        saveState();
+        applyLanguage(); // this updates ALL data-i18n elements, direction, and placeholders
+      });
+
+      // High contrast toggle
+      els.contrastBtn.addEventListener('click', () => {
+        state.highContrast = !state.highContrast;
+        document.body.classList.toggle('high-contrast', state.highContrast);
+        saveState();
+      });
+
+      document.querySelectorAll('a[href^="#"]').forEach(link => {
+        link.addEventListener('click', (e) => {
+          const id = link.getAttribute('href');
+          if (!id || id === '#') return;
+          const target = document.querySelector(id);
+          if (!target) return;
+          e.preventDefault();
+          const offset = 110;
+          const top = Math.max(0, target.getBoundingClientRect().top + window.scrollY - offset);
+          smoothScrollTo(top);
+        });
+      });
+
+      window.addEventListener('scroll', () => {
+        if (!els.backToTopBtn) return;
+        els.backToTopBtn.classList.toggle('visible', window.scrollY > 520);
+      }, { passive:true });
+
+      if (els.backToTopBtn) {
+        els.backToTopBtn.addEventListener('click', () => smoothScrollTo(0, 700));
+      }
+    }
+
+    /* ════════════════════════════════════════════════════════
+       BOOT
+    ════════════════════════════════════════════════════════ */
+    function init() {
+      buildLangSelector();    // Populate dropdown from LANGUAGES array
+      buildCountrySelect();
+      bindEvents();           // Attach all event listeners
+      applyLanguage();        // Apply saved language (updates all data-i18n elements)
+
+      // Apply saved contrast preference
+      document.body.classList.toggle('high-contrast', state.highContrast);
+
+      // Auto-detect timezone on first load
+      try { getEls().timezoneInput.value = Intl.DateTimeFormat().resolvedOptions().timeZone || ''; } catch {}
+
+      // Start UTC clock
+      setInterval(tickUTC, 1000); tickUTC();
+
+      // Initialize stars
+      initStars();
+
+      // Start cooldown UI if still active from last session
+      if (getRemainingCooldown() > 0) startCooldownUI();
+
+      // Update stats (non-blocking, fails silently)
+      updateStats();
+    }
+
+    init();
+
+  })();
+  </script>
+</body>
+</html>
